@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EdvynKaris | E-Commerce Engine</title>
+    <link rel="stylesheet" href="static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+    
+    <script src="https://unpkg.com/three@0.128.0/build/three.min.js"></script>
+    <script src="https://unpkg.com/three@0.128.0/examples/js/postprocessing/EffectComposer.js"></script>
+    <script src="https://unpkg.com/three@0.128.0/examples/js/postprocessing/RenderPass.js"></script>
+    <script src="https://unpkg.com/three@0.128.0/examples/js/postprocessing/ShaderPass.js"></script>
+    <script src="https://unpkg.com/three@0.128.0/examples/js/shaders/CopyShader.js"></script>
+    <script src="https://unpkg.com/three@0.128.0/examples/js/shaders/LuminosityHighPassShader.js"></script>
+    <script src="https://unpkg.com/three@0.128.0/examples/js/postprocessing/UnrealBloomPass.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body>
+
+    <div id="loader-overlay">
+        <div class="loader-logo" data-text="EK">EK</div>
+    </div>
+    
+    <nav id="top-nav">
+        <div class="brand">EK<span>/ENGINE</span></div>
+        <div class="cart-btn" id="ui-cart-btn">
+            CARRITO (<span id="cart-count">0</span>)
+        </div>
+    </nav>
+
+    <div id="scroll-hint">Desliza para explorar la experiencia</div>
+
+    <div id="checkout-overlay" class="hidden">
+        <div class="checkout-card">
+            <h2>Finalizar Pedido</h2>
+            <p>Ingresa tus datos para el envío seguro.</p>
+            <form id="real-checkout-form">
+                <div class="input-group">
+                    <input type="text" id="nombre" required placeholder="Nombre Completo" value="Eduardo">
+                </div>
+                <div class="input-group">
+                    <input type="email" id="email" required placeholder="Correo Electrónico">
+                </div>
+                <div class="input-group">
+                    <input type="text" id="direccion" required placeholder="Dirección de Envío">
+                </div>
+                <button type="submit" class="btn-primary">Confirmar y Pagar</button>
+                <button type="button" class="btn-text" id="btn-cancelar">Volver</button>
+            </form>
+        </div>
+    </div>
+
+    <canvas id="world-canvas"></canvas>
+    <script src="static/script.js"></script>
+</body>
+</html>

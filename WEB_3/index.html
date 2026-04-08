@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EdvynKaris | Cinematic Environment</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body>
+    <div id="sky-container">
+        <div id="weather-fx"></div>
+        <div id="sky-overlay"></div> 
+    </div>
+
+    <div id="cinematic-ui">
+        
+        <div class="visor-corner top-left"></div>
+        <div class="visor-corner top-right"></div>
+        <div class="visor-corner bottom-left"></div>
+        <div class="visor-corner bottom-right"></div>
+
+        <aside class="left-panel">
+            <div class="brand">
+                EdvynKaris<span class="dot-blink">.</span>
+            </div>
+            
+            <div class="sensor-data">
+                <div class="sensor-title">ESTADO ATMOSFÉRICO</div>
+                <h2 id="nav-temp">--°C</h2>
+                <p id="nav-location">Sincronizando satélite...</p>
+            </div>
+        </aside>
+
+        <main class="content-area">
+            
+            <nav class="minimal-nav">
+                <span class="nav-item active" data-target="view-home">01. INICIO</span>
+                <span class="nav-item" data-target="view-services">02. SERVICIOS</span>
+                <span class="nav-item" data-target="view-contact">03. CONTACTO</span>
+            </nav>
+
+            <div class="views-container">
+                <section id="view-home" class="view-section active">
+                    <h1 class="giant-text">
+                        EDVYNKARIS<br>
+                        <span class="outline-text">SISTEMA CLIMÁTICO</span>
+                    </h1>
+                    <p class="subtitle">Infraestructura asimétrica de alto rendimiento que respira, reacciona y evoluciona con tu entorno en tiempo real.</p>
+                </section>
+
+                <section id="view-services" class="view-section">
+                    <h2 class="section-title">NUESTROS SERVICIOS</h2>
+                    <div class="tech-list">
+                        <div class="tech-item">
+                            <div class="tech-header">
+                                <i class="ri-terminal-window-line"></i> 
+                                <h3>DESARROLLO DE SOFTWARE & POS</h3>
+                            </div>
+                            <p>Creación de sistemas a medida, plataformas de gestión y soluciones web escalables para el control total de operaciones empresariales.</p>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-header">
+                                <i class="ri-node-tree"></i> 
+                                <h3>ARQUITECTURA CLOUD Y API</h3>
+                            </div>
+                            <p>Diseño de endpoints robustos, integración de servicios y despliegue en servidores de alta disponibilidad con latencia cero.</p>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-header">
+                                <i class="ri-database-2-line"></i> 
+                                <h3>BÓVEDA DE DATOS Y SEGURIDAD</h3>
+                            </div>
+                            <p>Estructuración de bases de datos, almacenamiento encriptado de estado sólido y optimización de consultas críticas.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="view-contact" class="view-section">
+                    <h2 class="section-title">ESTABLECER CONEXIÓN</h2>
+                    
+                    <div class="contact-layout">
+                        <div class="contact-info-panel">
+                            <div class="info-block">
+                                <i class="ri-map-pin-line"></i>
+                                <div>
+                                    <h4>BASE DE OPERACIONES</h4>
+                                    <p>Valparaíso, Chile</p>
+                                </div>
+                            </div>
+                            <div class="info-block">
+                                <i class="ri-mail-send-line"></i>
+                                <div>
+                                    <h4>CANAL DIRECTO</h4>
+                                    <p>contacto@edvynkaris.cl</p>
+                                </div>
+                            </div>
+                            <div class="info-block">
+                                <i class="ri-phone-line"></i>
+                                <div>
+                                    <h4>LÍNEA SEGURA</h4>
+                                    <p>+56 9 1234 5678</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <form id="contact-form" class="ghost-form">
+                            <div class="ghost-input">
+                                <label>NOMBRE / IDENTIFICADOR</label>
+                                <input type="text" required>
+                            </div>
+                            <div class="ghost-input">
+                                <label>CORREO DE ENLACE</label>
+                                <input type="email" required>
+                            </div>
+                            <div class="ghost-input">
+                                <label>MENSAJE DE TRANSMISIÓN</label>
+                                <textarea rows="3" required></textarea>
+                            </div>
+                            <button type="submit" class="ghost-btn">ENVIAR MENSAJE <i class="ri-arrow-right-line"></i></button>
+                        </form>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>

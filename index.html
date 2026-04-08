@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HUB Plantillas Web | EdvynKaris</title>
+<style>
+    :root {
+        --bg-color: #000000;
+        --primary-neon: #bc13fe;
+        --glow: 0 0 15px #bc13fe, 0 0 30px #bc13fe;
+        --text-color: #ffffff;
+    }
+
+    body {
+        margin: 0;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        font-family: 'Segoe UI', sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
+        padding: 20px;
+    }
+
+    header {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    h1 {
+        color: var(--primary-neon);
+        text-shadow: var(--glow);
+        font-size: 2.5rem;
+        text-transform: uppercase;
+    }
+
+    .honeycomb {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        max-width: 1200px;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .hex {
+        position: relative;
+        width: 250px; 
+        height: 288px;
+        background-color: #111;
+        overflow: hidden;
+        /* El recorte hexagonal */
+        clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        cursor: pointer;
+        border: none;
+    }
+
+    .hex:hover {
+        transform: scale(1.1);
+        z-index: 10;
+    }
+
+    /* Brillo neón externo al hexágono */
+    .hex::after {
+        content: "";
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+        box-shadow: inset 0 0 0 3px var(--primary-neon);
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+
+    .hex:hover::after {
+        opacity: 1;
+    }
+
+    /* CONTENEDOR MAESTRO */
+    .iframe-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+    }
+
+    /* EL FIX DEFINITIVO: Forzamos resolución de escritorio y centramos con traslación */
+    iframe {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 1300px; /* Forzamos ancho de desktop real */
+        height: 1600px;
+        border: none;
+        /* El 0.22 es la clave: es ligeramente más grande que el hueco para tapar las orillas blancas */
+        transform: translate(-50%, -50%) scale(0.22);
+        transform-origin: center;
+    }
+
+    .hex-info {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(2px);
+        transition: all 0.3s ease;
+        opacity: 0;
+        z-index: 5;
+    }
+
+    .hex:hover .hex-info {
+        opacity: 1;
+    }
+
+    .hex-info h3 {
+        color: var(--primary-neon);
+        text-shadow: 0 0 10px var(--primary-neon);
+        font-size: 1.5rem;
+        text-transform: uppercase;
+        border: 2px solid var(--primary-neon);
+        padding: 10px 20px;
+        background: rgba(0,0,0,0.8);
+    }
+</style>
+</head>
+<body>
+
+    <header>
+        <h1>Portafolio - webs-template</h1>
+        <p>Haz clic en cualquier celda para abrir el sitio instantáneamente.</p>
+    </header>
+
+    <div class="honeycomb" id="honeycomb">
+        <div class="hex" data-url="WEB_1/">
+            <div class="iframe-container">
+                <iframe src="WEB_1/index.html"></iframe>
+            </div>
+            <div class="hex-info"><h3>WEB 1</h3></div>
+        </div>
+
+        <div class="hex" data-url="WEB_2/">
+            <div class="iframe-container">
+                <iframe src="WEB_2/index.html"></iframe>
+            </div>
+            <div class="hex-info"><h3>WEB 2</h3></div>
+        </div>
+
+        <div class="hex" data-url="WEB_3/">
+            <div class="iframe-container">
+                <iframe src="WEB_3/index.html"></iframe>
+            </div>
+            <div class="hex-info"><h3>WEB 3</h3></div>
+        </div>
+
+        <div class="hex" data-url="WEB_4/">
+            <div class="iframe-container">
+                <iframe src="WEB_4/index.html"></iframe>
+            </div>
+            <div class="hex-info"><h3>WEB 4</h3></div>
+        </div>
+
+        <div class="hex" data-url="WEB_5/">
+            <div class="iframe-container">
+                <iframe src="WEB_5/index.html"></iframe>
+            </div>
+            <div class="hex-info"><h3>WEB 5</h3></div>
+        </div>
+
+        <div class="hex" data-url="WEB_6/">
+            <div class="iframe-container">
+                <iframe src="WEB_6/index.html"></iframe>
+            </div>
+            <div class="hex-info"><h3>WEB 6</h3></div>
+        </div>
+
+        <div class="hex" data-url="WEB_7/">
+            <div class="iframe-container">
+                <iframe src="WEB_7/index.html"></iframe>
+            </div>
+            <div class="hex-info"><h3>WEB 7</h3></div>
+        </div>
+
+        <div class="hex" data-url="WEB_8/">
+            <div class="iframe-container">
+                <iframe src="WEB_8/index.html"></iframe>
+            </div>
+            <div class="hex-info"><h3>WEB 8</h3></div>
+        </div>
+
+        <div class="hex" data-url="WEB_9/">
+            <div class="iframe-container">
+                <iframe src="WEB_9/index.html"></iframe>
+            </div>
+            <div class="hex-info"><h3>WEB 9</h3></div>
+        </div>
+
+        <div class="hex" data-url="WEB_10/">
+            <div class="iframe-container">
+                <iframe src="WEB_10/index.html"></iframe>
+            </div>
+            <div class="hex-info"><h3>WEB 10</h3></div>
+        </div>
+
+        <div class="hex" data-url="WEB_11/">
+            <div class="iframe-container">
+                <iframe src="WEB_11/index.html"></iframe>
+            </div>
+            <div class="hex-info"><h3>WEB 11</h3></div>
+        </div>
+
+        <div class="hex" data-url="WEB_12/">
+            <div class="iframe-container">
+                <iframe src="WEB_12/index.html"></iframe>
+            </div>
+            <div class="hex-info"><h3>WEB 12</h3></div>
+        </div>
+
+    </div>
+
+    <script>
+        const honeycomb = document.getElementById('honeycomb');
+
+        // Ajuste 2: Clic directo para abrir en nueva pestaña
+        honeycomb.addEventListener('click', (e) => {
+            const clickedHex = e.target.closest('.hex');
+            if (clickedHex) {
+                const url = clickedHex.getAttribute('data-url');
+                window.open(url, '_blank');
+            }
+        });
+    </script>
+
+</body>
+</html>

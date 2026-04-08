@@ -1,0 +1,470 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    background: radial-gradient(circle at 50% 0%, #1a2a35 0%, #030507 100%);
+    color: #e0e0e0;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+#entorno-optico {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.hud-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 50px;
+}
+
+.marca h1 {
+    font-size: 1.5rem;
+    letter-spacing: 5px;
+    color: #fff;
+    font-weight: 300;
+}
+
+.linea-espectro {
+    height: 2px;
+    width: 100%;
+    margin-top: 10px;
+    background: linear-gradient(90deg, #4a00e0, #3498db, #2ecc71, #e74c3c);
+    box-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
+}
+
+.camara-antigravedad {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 100px 0;
+    position: relative;
+}
+
+.contenedor-ruleta {
+    position: relative;
+    width: 300px;
+    height: 350px;
+    perspective: 1500px; 
+}
+
+.ruleta {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transform-style: preserve-3d;
+    transition: transform 1.5s cubic-bezier(0.1, 0.9, 0.2, 1); 
+}
+
+.item-lente {
+    position: absolute;
+    width: 260px;
+    height: 320px;
+    left: calc(50% - 130px);
+    top: calc(50% - 160px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transform: rotateY(calc((var(--i) - 1) * 72deg)) translateZ(350px);
+    transition: transform 0.5s ease;
+}
+
+.item-lente:hover {
+    transform: rotateY(calc((var(--i) - 1) * 72deg)) translateZ(380px) translateY(-10px);
+}
+
+.item-lente img {
+    width: 100%; 
+    height: 180px; 
+    object-fit: contain; 
+    margin-bottom: 30px;
+    filter: drop-shadow(0 20px 15px rgba(0,0,0,0.6));
+    transition: transform 0.5s ease;
+}
+
+.item-lente:hover img {
+    transform: scale(1.1);
+    filter: drop-shadow(0 30px 20px rgba(0,0,0,0.8)) drop-shadow(0 0 15px rgba(52, 152, 219, 0.3));
+}
+
+.texto-fluorescente {
+    color: #fff;
+    font-weight: 300;
+    letter-spacing: 3px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.controles-holograficos {
+    margin-top: 60px;
+    display: flex;
+    justify-content: center; /* Fija los elementos al centro del eje horizontal */
+    align-items: center;
+    gap: 30px;
+    width: 100%; /* Obliga al contenedor a usar todo el espacio disponible para centrar bien */
+}
+
+.controles-holograficos button {
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.controles-holograficos button:hover {
+    color: #3498db;
+    transform: scale(1.2);
+}
+
+.eje-rotacion {
+    font-size: 0.7rem;
+    letter-spacing: 5px;
+    color: #aaa;
+    border-top: 1px solid rgba(255,255,255,0.2);
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    padding: 5px 0;
+}
+
+.oculto { display: none !important; }
+
+.btn-interfaz {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.3);
+    color: #fff;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+    margin-bottom: 40px;
+}
+
+.btn-interfaz:hover {
+    background: #fff;
+    color: #000;
+}
+
+/* =========================================
+   ZONA DE CALIBRACIÓN FOCAL
+   ========================================= */
+
+.zona-calibracion {
+    position: relative;
+    padding: 80px 50px 150px 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 80px;
+}
+
+.lente-prueba {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: crosshair; 
+}
+
+.aro-optico {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.8), 0 0 15px rgba(255,255,255,0.05);
+    transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+    z-index: 2;
+    pointer-events: none;
+}
+
+.marcador-eje {
+    position: absolute;
+    color: #444;
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+.marcador-eje:nth-child(1) { top: -20px; left: calc(50% - 10px); }
+.marcador-eje:nth-child(2) { right: -30px; top: calc(50% - 6px); }
+.marcador-eje:nth-child(3) { bottom: -20px; left: calc(50% - 12px); }
+.marcador-eje:nth-child(4) { left: -30px; top: calc(50% - 6px); }
+
+.cristal-refractor {
+    position: absolute;
+    width: 90%;
+    height: 90%;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,255,255,0.02) 0%, transparent 70%);
+    backdrop-filter: blur(2px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.cristal-refractor::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.05) 45%, rgba(255,255,255,0.1) 50%, transparent 55%);
+    transform: rotate(30deg) translateY(100%);
+    transition: transform 0.8s ease;
+}
+
+.datos-aberracion {
+    filter: blur(4px);
+    transform: scale(0.9);
+    opacity: 0.6;
+    letter-spacing: -1px;
+    text-shadow: -3px 0px 0px rgba(255, 0, 0, 0.7), 3px 0px 0px rgba(0, 200, 255, 0.7);
+    transition: all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.datos-aberracion h4 {
+    font-size: 1.8rem;
+    color: #fff;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    font-weight: 300;
+}
+
+.datos-aberracion p {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: #ddd;
+}
+
+.txt-apagado {
+    color: #777 !important;
+}
+
+.lente-prueba:hover .aro-optico {
+    transform: rotate(180deg);
+    border-color: rgba(52, 152, 219, 0.4);
+    box-shadow: 0 0 30px rgba(52, 152, 219, 0.2);
+}
+
+.lente-prueba:hover .marcador-eje {
+    color: #3498db;
+    text-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+}
+
+.lente-prueba:hover .cristal-refractor::after {
+    transform: rotate(30deg) translateY(-100%);
+}
+
+.lente-prueba:hover .datos-aberracion {
+    filter: blur(0px);
+    transform: scale(1);
+    opacity: 1;
+    letter-spacing: 1px;
+    text-shadow: 0 0 10px rgba(52, 152, 219, 0.8);
+}
+
+/* =========================================
+   MAPA INMERSIVO Y FOOTER
+   ========================================= */
+
+.radar-ubicacion {
+    position: relative;
+    width: 100%;
+    height: 450px;
+    margin-top: 50px;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%);
+}
+
+.radar-ubicacion iframe {
+    filter: invert(1) grayscale(1) contrast(1.5) brightness(0.8);
+    pointer-events: none; 
+}
+
+.coordenadas-overlay {
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    text-align: center;
+    pointer-events: none;
+}
+
+.coordenadas-overlay p {
+    font-size: 0.7rem;
+    letter-spacing: 5px;
+    color: #3498db;
+    margin-bottom: 5px;
+}
+
+.coordenadas-overlay span {
+    font-size: 1.2rem;
+    font-weight: 300;
+    letter-spacing: 3px;
+    color: #fff;
+    text-shadow: 0 0 15px rgba(0,0,0,0.8);
+}
+
+.hud-footer {
+    padding: 0 50px 30px 50px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.footer-contenido {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-contenido p {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 1px;
+}
+
+.firma-dev {
+    font-size: 0.7rem !important;
+    letter-spacing: 6px !important;
+    color: #8e2de2 !important;
+    font-weight: bold;
+    margin-top: 10px;
+    text-shadow: 0 0 10px rgba(142, 45, 226, 0.4);
+}
+
+/* =========================================
+   GRILLA DE PRODUCTOS (VISORES HOLOGRÁFICOS)
+   ========================================= */
+
+#seccion-catalogo {
+    width: 100%;
+    padding: 0 50px;
+}
+
+.grilla-catalogo {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 60px;
+    margin-top: 60px;
+}
+
+.visor-producto {
+    position: relative;
+    width: 280px;
+    height: 380px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: transparent; /* Cero fondos */
+    cursor: crosshair;
+}
+
+/* Escuadras de enfoque (Reemplaza a los bordes cuadrados) */
+.visor-producto::before,
+.visor-producto::after {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(52, 152, 219, 0.3);
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    pointer-events: none;
+}
+
+.visor-producto::before {
+    top: 0;
+    left: 0;
+    border-right: none;
+    border-bottom: none;
+}
+
+.visor-producto::after {
+    bottom: 0;
+    right: 0;
+    border-left: none;
+    border-top: none;
+}
+
+.visor-producto:hover::before,
+.visor-producto:hover::after {
+    width: 100%;
+    height: 100%;
+    border-color: rgba(52, 152, 219, 0.8);
+    box-shadow: inset 0 0 20px rgba(52, 152, 219, 0.1);
+}
+
+.visor-producto img {
+    width: 85%;
+    height: 140px;
+    object-fit: contain;
+    filter: drop-shadow(0 20px 15px rgba(0,0,0,0.8));
+    transition: transform 0.5s ease;
+    z-index: 2;
+}
+
+.visor-producto:hover img {
+    transform: scale(1.1) translateY(-20px);
+}
+
+/* Información Técnica Revelada */
+.info-tecnica {
+    position: absolute;
+    bottom: 30px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s ease;
+    z-index: 3;
+}
+
+.visor-producto:hover .info-tecnica {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.info-tecnica h4 {
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 300;
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+    text-shadow: 0 0 10px rgba(255,255,255,0.5);
+}
+
+.info-tecnica .spec {
+    font-size: 0.7rem;
+    color: #3498db;
+    letter-spacing: 3px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.info-tecnica .precio {
+    font-size: 1.1rem;
+    color: #2ecc71;
+    font-weight: bold;
+}

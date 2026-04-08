@@ -1,0 +1,60 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #050507; 
+    color: #ffffff;
+    font-family: 'Segoe UI', sans-serif;
+    overflow-x: hidden;
+}
+
+#canvas-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1; 
+}
+
+/* MODIFICADO: De 500vh a 650vh para acomodar la nueva parada final */
+.scroll-track {
+    position: relative;
+    height: 650vh; 
+    z-index: 2;
+    pointer-events: none; 
+}
+
+.ui-overlay {
+    position: fixed;
+    top: 10vh;
+    left: 10vw;
+    z-index: 10;
+    opacity: 0; 
+    pointer-events: none;
+    border-left: 3px solid #88ffcc;
+    padding-left: 20px;
+}
+
+.ui-overlay h2 {
+    font-size: 2rem;
+    font-weight: 300;
+    letter-spacing: 4px;
+    color: #88ffcc;
+    margin-bottom: 5px;
+}
+
+.ui-overlay p { color: #8a8d93; letter-spacing: 1px; }
+
+.historia-style { border-left: 3px solid #8a0303; }
+.historia-style h2 { color: #8a0303; }
+
+.contacto-style { border-left: 3px solid #ffffff; }
+.contacto-style h2 { color: #ffffff; }
+
+/* NUEVO ESTILO FOOTER */
+.footer-style { border-left: 3px solid #8a0303; }
+.footer-style h2 { color: #8a0303; }

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web - Template | EdvynKaris</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <header class="seccion-hero">
+        <h1 class="titulo-animado" id="titulo-principal">EdvynKaris</h1>
+    </header>
+
+    <div class="contenedor-lienzo">
+        <div class="lienzo-diagonal"> 
+            
+            <div class="fondo-mandalas mandala-1"></div>
+            <div class="fondo-mandalas mandala-2"></div>
+
+            <div class="contenido-recto">
+                <button class="btn-menu" onclick="abrirVentana('ventana-usuarios')">Sobre nosotros</button>
+                <button class="btn-menu" onclick="abrirVentana('ventana-servicios')">Servicios</button>
+                <button class="btn-menu" onclick="abrirVentana('ventana-contacto')">Contacto</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="ventana-usuarios" class="ventana-flotante">
+        <div class="makimono-container">
+            <div class="makimono-rodillo"></div>
+            <div class="makimono-pergamino">
+                <div class="makimono-contenido">
+                    <button class="btn-cerrar-makimono" onclick="cerrarVentana('ventana-usuarios')">✕</button>
+                    <h2>Somos...</h2>
+                    <p>Mas que una empresa de desarrollo, somos una familia.</p>
+                </div>
+            </div>
+            <div class="makimono-rodillo"></div>
+        </div>
+    </div>
+
+    <div id="ventana-servicios" class="ventana-flotante">
+        <div class="makimono-container">
+            <div class="makimono-rodillo"></div>
+            <div class="makimono-pergamino">
+                <div class="makimono-contenido">
+                    <button class="btn-cerrar-makimono" onclick="cerrarVentana('ventana-servicios')">✕</button>
+                    <h2>Nuestros Servicios</h2>
+                    <p>Nos dedicamos a desarrollar soluciones a tus problemas:<br><br>
+                        - Softwares Dedicados<br>
+                        - APIs Dedicadas<br>
+                        - Webs Personalizadas<br><br>
+                        
+                        estos y más...
+                    </p>
+                </div>
+            </div>
+            <div class="makimono-rodillo"></div>
+        </div>
+    </div>
+
+    <div id="ventana-contacto" class="ventana-flotante">
+        <div class="makimono-container">
+            <div class="makimono-rodillo"></div>
+            <div class="makimono-pergamino">
+                <div class="makimono-contenido">
+                    <button class="btn-cerrar-makimono" onclick="cerrarVentana('ventana-contacto')">✕</button>
+                    <h2>Contactanos</h2>
+                    <p>Nuestra informacion de contacto:<br><br>
+                        - Telefono: +56 1234 5678<br>
+                        - Correo: contacto@edvynkaris.com<br><br>
+                        Contactanos para obtener mas informacion acerca nuestros servicios.</p>
+                </div>
+            </div>
+            <div class="makimono-rodillo"></div>
+        </div>
+    </div>
+
+    <div class="contenedor-lienzo inverso">
+        <div class="lienzo-diagonal inverso"> 
+            
+            <div class="fondo-mandalas mandala-1"></div>
+            <div class="fondo-mandalas mandala-2"></div>
+
+            <div class="contenido-recto inverso">
+                <button class="btn-menu" onclick="abrirVentana('ventana-proyectos')">Proyectos</button>
+                <button class="btn-menu" onclick="abrirVentana('ventana-grupos')">Grupos</button>
+                <button class="btn-menu" onclick="abrirVentana('ventana-sucursales')">Sucursales</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="ventana-proyectos" class="ventana-flotante">
+        <div class="makimono-container">
+            <div class="makimono-rodillo"></div>
+            <div class="makimono-pergamino">
+                <div class="makimono-contenido">
+                    <button class="btn-cerrar-makimono" onclick="cerrarVentana('ventana-proyectos')">✕</button>
+                    <h2>Nuestros Proyectos</h2>
+                    <p>Aquí va el portafolio de tus proyectos...</p>
+                </div>
+            </div>
+            <div class="makimono-rodillo"></div>
+        </div>
+    </div>
+
+    <div id="ventana-grupos" class="ventana-flotante">
+        <div class="makimono-container">
+            <div class="makimono-rodillo"></div>
+            <div class="makimono-pergamino">
+                <div class="makimono-contenido">
+                    <button class="btn-cerrar-makimono" onclick="cerrarVentana('ventana-grupos')">✕</button>
+                    <h2>Grupos</h2>
+                    <p>Información sobre los grupos de trabajo...</p>
+                </div>
+            </div>
+            <div class="makimono-rodillo"></div>
+        </div>
+    </div>
+
+    <div id="ventana-sucursales" class="ventana-flotante">
+        <div class="makimono-container">
+            <div class="makimono-rodillo"></div>
+            <div class="makimono-pergamino">
+                <div class="makimono-contenido">
+                    <button class="btn-cerrar-makimono" onclick="cerrarVentana('ventana-sucursales')">✕</button>
+                    <h2>Sucursales</h2>
+                    <p>Listado de direcciones y sucursales...</p>
+                </div>
+            </div>
+            <div class="makimono-rodillo"></div>
+        </div>
+    </div>
+
+    <section class="mensaje-final">
+        <h2 class="titulo-cierre">¿Listo para dar el siguiente paso?</h2>
+        <p class="descripcion-cierre">Únete a nosotros y transforma tu visión en realidad. Explora nuestras secciones y descubre todo lo que podemos hacer por ti.</p>
+    </section>
+
+    <footer class="footer-principal">
+        <div class="footer-contenido">
+            <p>&copy; 2026 Web - Template #2. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+    
+    <script src="index.js"></script>
+</body>
+</html>

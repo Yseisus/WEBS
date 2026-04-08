@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EdvynKaris - Pizzería Artesanal</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+
+    <header class="hero-section">
+        <video autoplay loop muted playsinline class="hero-video">
+            <source src="anuncio-pizza.mp4" type="video/mp4">
+            Tu navegador no soporta la etiqueta de video.
+        </video>
+        <div class="video-overlay"></div>
+        <div class="hero-content">
+            <h1>EdvynKaris</h1>
+            <p class="subtitle">El arte de la verdadera pizza</p>
+        </div>
+    </header>
+
+    <section class="table-section" id="mesa">
+        <div class="section-header">
+            <h2>Nuestra Mesa de Preparación</h2>
+            <p>Visualiza la magia detrás de cada una de nuestras recetas</p>
+        </div>
+        
+        <div class="table-3d-wrapper">
+            <div class="pizza-controls-bar">
+                <select id="preset-pizzas" class="ui-select">
+                    <option value="custom" selected>Explorar ingredientes (Modo Libre)</option>
+                    <option value="margarita">Receta: Margarita Clásica</option>
+                    <option value="pepperoni">Receta: Pepperoni Tradicional</option>
+                    <option value="vegetariana">Receta: Vegetariana Suprema</option>
+                    <option value="napolitana">Receta: Napolitana</option>
+                    <option value="carnivora">Receta: Carnívora (Meat Lover)</option>
+                </select>
+                <button id="btn-undo" class="ui-button">Deshacer Último</button>
+            </div>
+
+            <div id="ingredient-tooltip" class="tooltip">Ingrediente</div>
+            <div class="table-3d-container" id="canvas-mesa"></div>
+        </div>
+    </section>
+
+    <section class="sides-section" id="extras">
+        <div class="section-header">
+            <h2>Más allá de la Pizza</h2>
+            <p>Descubre los acompañamientos perfectos para tu velada</p>
+        </div>
+        <div class="categories-grid">
+            <div class="category-card" data-target="sides">
+                <video autoplay loop muted playsinline class="category-media">
+                    <source src="acompañamientos.mp4" type="video/mp4">
+                </video>
+                <div class="category-overlay">
+                    <h3>Acompañamientos</h3>
+                    <button class="open-menu-btn">Ver Especialidades</button>
+                </div>
+            </div>
+            
+            <div class="category-card" data-target="drinks">
+                <video autoplay loop muted playsinline class="category-media">
+                    <source src="bebidas.mp4" type="video/mp4">
+                </video>
+                <div class="category-overlay">
+                    <h3>Bebidas y Refrescos</h3>
+                    <button class="open-menu-btn">Ver Carta</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal-overlay" id="menu-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title">Nuestra Carta</h3>
+                <button class="close-modal-btn" id="close-modal-btn">✕</button>
+            </div>
+            <div class="modal-body" id="modal-items-container"></div>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h2>EDVYNKARIS</h2>
+                <p>Tradición, innovación y el mejor sabor directamente a tu mesa.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Navegación</h4>
+                <ul>
+                    <li><a href="#mesa">Experiencia 3D</a></li>
+                    <li><a href="#extras">La Carta</a></li>
+                    <li><a href="#">Sobre Nosotros</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 EdvynKaris. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="index.js"></script>
+</body>
+</html>

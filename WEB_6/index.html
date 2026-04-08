@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rothko Café | El Arte del Grano</title>
+    <link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">Rothko <span>Café</span></div>
+        <ul class="nav-links">
+            <li><a href="#home">Inicio</a></li>
+            <li><a href="#experiencia">Experiencia</a></li>
+            <li><a href="#ubicacion">Ubicación</a></li>
+            <li><button id="btn-contacto" class="btn-primary">Reservar Mesa</button></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Pasión por el <span class="text-gradient">Grano de Origen</span></h1>
+            <p>Descubre el equilibrio perfecto entre tostado artesanal y un ambiente diseñado para la contemplación.</p>
+            <div class="cta-group">
+                <button id="btn-carta" class="btn-glow">Ver Carta</button>
+                <button id="btn-historia" class="btn-outline">Nuestra Historia</button>
+            </div>
+        </div>
+
+        <div class="hero-graphics">
+            <div class="orb orb-1"></div>
+            <div class="orb orb-2"></div>
+            <img src="img/cafe-home.png" alt="Rothko Café" class="hero-img-only">
+        </div>
+    </section>
+
+    <section id="experiencia" class="features">
+        <h2 class="section-title">La Experiencia Rothko</h2>
+        <div class="grid">
+            <div class="feature-card reveal">
+                <h3>Selección Premium</h3>
+                <p>Granos recolectados a mano en fincas sostenibles de alta montaña.</p>
+            </div>
+            <div class="feature-card reveal">
+                <h3>Tostado Maestro</h3>
+                <p>Procesamos cada lote en pequeñas cantidades para asegurar la frescura máxima.</p>
+            </div>
+            <div class="feature-card reveal">
+                <h3>Espacio Creativo</h3>
+                <p>Un entorno diseñado para la lectura y el trabajo enfocado.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="ubicacion" class="map-section reveal">
+        <h2 class="section-title">Donde sucede el arte</h2>
+        <div class="map-container">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3344.864703847847!2d-71.6074944!3d-33.0468944!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9689e0df232f3f9b%3A0xc0e24b455c120023!2sVictoria%202822%2C%202340000%20Valpara%C3%ADso%2C%20Chile!5e0!3m2!1ses-419!2scl!4v1700000000000!5m2!1ses-419!2scl" 
+                width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy">
+            </iframe>
+        </div>
+    </section>
+
+    <section class="social-pre-footer">
+        <div class="social-icons">
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" aria-label="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="https://wa.me/56900000000" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+    </section>
+
+    <div id="modal-contacto" class="modal-overlay">
+        <div class="modal-content glass-card-modal">
+            <span class="close-btn">&times;</span>
+            <h2 class="modal-title">Reserva tu Rincón</h2>
+            <form class="contact-form">
+                <input type="text" placeholder="Tu Nombre" required>
+                <input type="email" placeholder="Correo de contacto" required>
+                <textarea placeholder="¿Alguna preferencia?" rows="4" required></textarea>
+                <button type="submit" class="btn-glow">Confirmar Reserva</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="modal-carta" class="modal-overlay">
+        <div class="modal-content glass-card-modal">
+            <span class="close-btn">&times;</span>
+            <h2 class="modal-title">Nuestra Selección</h2>
+            <div class="menu-list">
+                <div class="menu-item"><span>Espresso Intenso</span><span class="price">$2.500</span></div>
+                <div class="menu-item"><span>Flat White Australiano</span><span class="price">$3.200</span></div>
+                <div class="menu-item"><span>Mocha Avellana Orgánico</span><span class="price">$3.800</span></div>
+                <div class="menu-item"><span>Tarta de Arándanos & Lavanda</span><span class="price">$4.200</span></div>
+                <div class="menu-item"><span>Toast de Masa Madre & Palta</span><span class="price">$5.500</span></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-historia" class="modal-overlay">
+        <div class="modal-content glass-card-modal">
+            <span class="close-btn">&times;</span>
+            <h2 class="modal-title">Nuestra Historia</h2>
+            <p class="history-text">
+                Rothko Café nació en las calles de Valparaíso con una idea simple: el café, al igual que el arte de Mark Rothko, debe ser una experiencia emocional. <br><br>
+                En 2018, Eduardo fundó este espacio buscando el equilibrio entre el tostado artesanal y la contemplación. Aquí, cada taza es un lienzo de sabor diseñado para ofrecer un refugio en medio del caos urbano.
+            </p>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-bottom">
+            <p>&copy; 2026 Rothko Café. Victoria 2822, Valparaíso.</p>
+        </div>
+    </footer>
+
+    <script src="static/script.js"></script>
+</body>
+</html>

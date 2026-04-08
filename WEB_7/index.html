@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Restobar | Menú Mágico</title>
+    <link rel="stylesheet" href="web_2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+    <header class="seccion-1">
+        <h1 id="titulo-principal">Rama Santi</h1>
+        <p id="descripcion-principal">La verdadera experiencia a la piedra</p>
+    </header>
+
+    <div class="contenedor-carrusel">
+        
+        <button id="btn-prev" class="btn-elegante btn-izq">⟵</button> 
+
+        <div class="escenario-3d">
+            <main class="ruleta" id="ruleta">
+                <section class="caja aura-zafiro" style="--i: 0;" data-categoria="cocteleria">
+                    <div class="aura-magica"></div>
+                    <img src="imgs2/coctel_premium.jpg" alt="Cóctel" class="imagen-magica">
+                    <div class="info-plato">
+                        <h2>Coctelería</h2>
+                        <p>Elixir de Autor</p>
+                    </div>
+                </section>
+
+                <section class="caja aura-solar" style="--i: 1;" data-categoria="pizzas">
+                    <div class="aura-magica"></div>
+                    <img src="imgs2/pizza_piedra.avif" alt="Pizza" class="imagen-magica">
+                    <div class="info-plato">
+                        <h2>Pizzas</h2>
+                        <p>A la Piedra</p>
+                    </div>
+                </section>
+
+                <section class="caja aura-carmesi" style="--i: 2;" data-categoria="cortes">
+                    <div class="aura-magica"></div>
+                    <img src="imgs2/corte_carne.jpg" alt="Corte" class="imagen-magica">
+                    <div class="info-plato">
+                        <h2>Cortes</h2>
+                        <p>Carnes Premium</p>
+                    </div>
+                </section>
+
+                <section class="caja aura-esmeralda" style="--i: 3;" data-categoria="tablas">
+                    <div class="aura-magica"></div>
+                    <img src="imgs2/tabla_queso.jpg" alt="Tabla" class="imagen-magica">
+                    <div class="info-plato">
+                        <h2>Tablas</h2>
+                        <p>Para Compartir</p>
+                    </div>
+                </section>
+
+                <section class="caja aura-estelar" style="--i: 4;" data-categoria="postres">
+                    <div class="aura-magica"></div>
+                    <img src="imgs2/postre.jpg" alt="Postre" class="imagen-magica">
+                    <div class="info-plato">
+                        <h2>Postres</h2>
+                        <p>El Dulce Final</p>
+                    </div>
+                </section>
+            </main>
+        </div>
+
+        <button id="btn-next" class="btn-elegante btn-der">⟶</button>
+
+    </div>
+
+    <div class="contenedor-corona">
+        <button id="btn-volver-mapa" class="btn-corona" title="Volver al Mapa">♛</button>
+    </div>
+
+    <div id="zona-dinamica">
+        
+        <section id="vista-ubicacion" class="seccion-ubicacion animacion-aparicion">
+            <iframe class="mapa-negro" src="https://maps.google.com/maps?q=Victoria%202350,%20Valpara%C3%ADso&t=&z=16&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+
+            <div class="sombra-mapa"></div>
+
+            <div class="hud-contacto">
+                <div class="hud-header">
+                    <h2 class="titulo-contacto">Rama Santi</h2>
+                    <div class="pulso-live"></div>
+                </div>
+                
+                <div class="hud-body">
+                    <div class="hud-item">
+                        <span class="hud-label">Coordenadas</span>
+                        <p>Victoria 2350, 2362025<br>Valparaíso</p>
+                    </div>
+                    <div class="hud-item">
+                        <span class="hud-label">Enlace Directo</span>
+                        <p>+56 9 XXXX XXXX</p>
+                    </div>
+                    <div class="hud-item">
+                        <span class="hud-label">Horario</span>
+                        <p>Mar - Dom | 18:00 - 02:00</p>
+                    </div>
+                </div>
+
+                <a href="#" class="hud-btn">Iniciar Reserva</a>
+            </div>
+        </section>
+
+        <section id="vista-carta" class="seccion-carta oculto">
+            <div class="carta-brillo-fondo"></div>
+            <h2 id="carta-titulo" class="carta-titulo">Categoría</h2>
+            <div id="carta-contenido" class="lista-platos">
+                </div>
+        </section>
+
+    </div>
+
+    <section class="pre-footer-redes">
+        <h3 class="titulo-redes">Conecta con la Magia</h3>
+        <div class="contenedor-redes">
+            <a href="#" class="red-item" data-text="Instagram">
+                <i class="fa-brands fa-instagram icono"></i>
+            </a>
+            <a href="#" class="red-item" data-text="TikTok">
+                <i class="fa-brands fa-tiktok icono"></i>
+            </a>
+            <a href="#" class="red-item" data-text="WhatsApp">
+                <i class="fa-brands fa-whatsapp icono"></i>
+            </a>
+            <a href="#" class="red-item" data-text="Facebook">
+                <i class="fa-brands fa-facebook-f icono"></i>
+            </a>
+            <a href="#" class="red-item" data-text="X">
+                <i class="fa-brands fa-x-twitter icono"></i>
+            </a>
+        </div>
+    </section>
+
+    <footer class="footer-elegante">
+        <div class="footer-linea"></div>
+        <div class="footer-contenido">
+            <div class="footer-logo">Rama Santi</div>
+            <p class="footer-copy">&copy; 2026 Rama Santi Restobar. Todos los derechos reservados.</p>
+            <p class="footer-credito">Desarrollado por <span class="resaltado-edvyn">EdvynKaris</span></p>
+        </div>
+    </footer>
+
+    <script>
+        // --- 1. LÓGICA DE LA RULETA (Giro manual) ---
+        const ruleta = document.getElementById('ruleta');
+        const btnPrev = document.getElementById('btn-prev');
+        const btnNext = document.getElementById('btn-next');
+        let anguloActual = 0;
+
+        btnNext.addEventListener('click', () => {
+            anguloActual -= 72;
+            ruleta.style.transform = `rotateY(${anguloActual}deg)`;
+        });
+
+        btnPrev.addEventListener('click', () => {
+            anguloActual += 72;
+            ruleta.style.transform = `rotateY(${anguloActual}deg)`;
+        });
+
+        // --- 2. BASE DE DATOS MÁGICA (Menú inventado) ---
+        const menuDatos = {
+            cocteleria: {
+                titulo: "Elixires de Autor",
+                items: [
+                    { nombre: "Lágrimas de Fénix", desc: "Gin infusionado, frutos rojos silvestres, humo de romero y polvo de oro.", precio: "$8.900" },
+                    { nombre: "Beso de la Viuda", desc: "Vodka negro, licor de mora, jugo de lima y neblina de hielo seco.", precio: "$7.500" },
+                    { nombre: "Alquimia Cítrica", desc: "Tequila reposado, triple sec, pomelo quemado y sal de gusano.", precio: "$8.000" }
+                ]
+            },
+            pizzas: {
+                titulo: "A la Piedra Solar",
+                items: [
+                    { nombre: "La Ofrenda", desc: "Salsa pomodoro artesanal, mozzarella fior di latte, prosciutto y rúcula fresca.", precio: "$14.500" },
+                    { nombre: "Cenizas del Volcán", desc: "Base negra de carbón activado, queso provolone, pepperoni picante y miel ahumada.", precio: "$15.900" },
+                    { nombre: "Bosque Encantado", desc: "Mix de setas trufadas, queso parmesano, ajo asado y aceite de trufa blanca.", precio: "$16.500" }
+                ]
+            },
+            cortes: {
+                titulo: "Carnes Premium",
+                items: [
+                    { nombre: "El Sacrificio (Lomo Vetado)", desc: "Corte de 350g sellado al fuego vivo con mantequilla de romero y ajos confitados.", precio: "$18.900" },
+                    { nombre: "Tomahawk del Rey", desc: "1.2 kg de pura potencia, madurado por 30 días, acompañado de papas nativas.", precio: "$45.000" },
+                    { nombre: "Entraña Mística", desc: "Corte jugoso y tierno, marinado en hierbas oscuras y sal de mar.", precio: "$19.500" }
+                ]
+            },
+            tablas: {
+                titulo: "Para Compartir",
+                items: [
+                    { nombre: "El Ritual del Queso", desc: "Selección de quesos maduros, brie fundido, nueces y miel de ulmo.", precio: "$22.000" },
+                    { nombre: "Tabla del Cazador", desc: "Cortes de charcutería artesanal, crudo de res, aceitunas y pan de masa madre.", precio: "$25.500" }
+                ]
+            },
+            postres: {
+                titulo: "El Dulce Final",
+                items: [
+                    { nombre: "Corazón de Obsidiana", desc: "Volcán de chocolate negro 70% con centro líquido y helado de vainilla en rama.", precio: "$7.900" },
+                    { nombre: "Nube de Valparaíso", desc: "Panna cotta de lavanda, coulis de arándanos y tierra de pistachos.", precio: "$6.500" }
+                ]
+            }
+        };
+
+        // --- 3. LÓGICA DE INTERACCIÓN (HUD vs CARTA) ---
+        const cajas = document.querySelectorAll('.caja');
+        const vistaUbicacion = document.getElementById('vista-ubicacion');
+        const vistaCarta = document.getElementById('vista-carta');
+        const btnVolverMapa = document.getElementById('btn-volver-mapa');
+        const cartaTitulo = document.getElementById('carta-titulo');
+        const cartaContenido = document.getElementById('carta-contenido');
+        const btnCorona = document.querySelector('.contenedor-corona');
+
+        // Al hacer clic en un platillo de la ruleta
+        cajas.forEach(caja => {
+            caja.addEventListener('click', () => {
+                const categoria = caja.getAttribute('data-categoria');
+                const datos = menuDatos[categoria];
+
+                // Cambiar el título
+                cartaTitulo.innerHTML = datos.titulo;
+
+                // Generar el HTML de los platillos
+                cartaContenido.innerHTML = '';
+                datos.items.forEach(item => {
+                    const htmlItem = `
+                        <div class="plato-item">
+                            <div class="plato-header">
+                                <span class="plato-nombre">${item.nombre}</span>
+                                <span class="plato-linea"></span>
+                                <span class="plato-precio">${item.precio}</span>
+                            </div>
+                            <p class="plato-desc">${item.desc}</p>
+                        </div>
+                    `;
+                    cartaContenido.innerHTML += htmlItem;
+                });
+
+                // Transición: Ocultar mapa, mostrar carta
+                vistaUbicacion.classList.add('oculto');
+                vistaUbicacion.classList.remove('animacion-aparicion');
+                
+                vistaCarta.classList.remove('oculto');
+                vistaCarta.classList.add('animacion-aparicion');
+                
+                btnCorona.classList.add('corona-activa'); // Ilumina la corona
+                
+                // Hace scroll automático hacia abajo suavemente
+                document.getElementById('zona-dinamica').scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Al hacer clic en la coronita para volver
+        btnVolverMapa.addEventListener('click', () => {
+            // Transición: Ocultar carta, mostrar mapa
+            vistaCarta.classList.add('oculto');
+            vistaCarta.classList.remove('animacion-aparicion');
+            
+            vistaUbicacion.classList.remove('oculto');
+            vistaUbicacion.classList.add('animacion-aparicion');
+            
+            btnCorona.classList.remove('corona-activa'); // Apaga la corona
+            
+            // Hace scroll automático hacia abajo suavemente
+            document.getElementById('zona-dinamica').scrollIntoView({ behavior: 'smooth' });
+        });
+
+    </script>
+</body>
+</html>

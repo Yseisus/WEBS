@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web - Template | EdvynKaris</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+            }
+        }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    
+    <div id="canvas-container"></div>
+    <div class="scroll-track"></div>
+
+    <header class="ui-overlay" id="servicios-header">
+        <h2>NUESTROS SERVICIOS</h2>
+        <p>Interactúa con los monolitos de datos</p>
+    </header>
+
+    <header class="ui-overlay historia-style" id="historia-header">
+        <h2>NUESTRA HISTORIA</h2>
+        <p>Evolución de nuestro ecosistema</p>
+    </header>
+
+    <header class="ui-overlay contacto-style" id="contacto-header">
+        <h2>CONEXIÓN ESTABLECIDA</h2>
+        <p>Elige tu vector de aproximación</p>
+    </header>
+
+    <header class="ui-overlay footer-style" id="footer-header">
+        <h2>NÚCLEO EDVYNKARIS</h2>
+        <p>Infraestructura asegurada. Ecosistema en línea.</p>
+    </header>
+
+    <script type="module" src="index.js"></script>
+</body>
+</html>

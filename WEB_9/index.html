@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Óptica Cloe Cruz | Interfaz Avanzada</title>
+        <link rel="stylesheet" href="static/style.css">
+    </head>
+
+    <body>
+        <div id="entorno-optico">
+            <header class="hud-header">
+                <div class="marca">
+                    <h1>ÓPTICA CLOE CRUZ</h1>
+                    <div class="linea-espectro"></div>
+                </div>
+            </header>
+
+            <main class="camara-antigravedad">
+                <section class="seccion-ruleta" id="seccion-ruleta">
+                    <div class="contenedor-ruleta">
+                        <div class="ruleta" id="ruleta">
+                            <div class="item-lente" style="--i: 1;" data-tipo="sol">
+                                <img src="img/lentes-sol.png" alt="Lentes de Sol">
+                                <h3 class="texto-fluorescente">LENTES DE SOL</h3>
+                            </div>
+                            <div class="item-lente" style="--i: 2;" data-tipo="lectura">
+                                <img src="img/lentes-lectura.png" alt="Lentes de Lectura">
+                                <h3 class="texto-fluorescente">LECTURA</h3>
+                            </div>
+                            <div class="item-lente" style="--i: 3;" data-tipo="descanso">
+                                <img src="img/lentes-descanso.png" alt="Lentes de Descanso">
+                                <h3 class="texto-fluorescente">DESCANSO</h3>
+                            </div>
+                            <div class="item-lente" style="--i: 4;" data-tipo="deportivos">
+                                <img src="img/lentes-deportivo.png" alt="Lentes Deportivos">
+                                <h3 class="texto-fluorescente">DEPORTIVOS</h3>
+                            </div>
+                            <div class="item-lente" style="--i: 5;" data-tipo="infantiles">
+                                <img src="img/lentes-infantiles.png" alt="Lentes Infantiles">
+                                <h3 class="texto-fluorescente">INFANTILES</h3>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="controles-holograficos">
+                        <button id="btn-prev">◀</button>
+                        <span class="eje-rotacion">ROTACIÓN</span>
+                        <button id="btn-next">▶</button>
+                    </div>
+                </section>
+
+                <section class="seccion-catalogo oculto" id="seccion-catalogo">
+                    <button id="btn-volver" class="btn-interfaz">❮ RECALIBRAR VISIÓN</button>
+                    <h2 id="titulo-catalogo" class="texto-fluorescente">CATÁLOGO</h2>
+                    <div class="grilla-catalogo" id="grilla-catalogo"></div>
+                </section>
+            </main>
+
+            <section class="zona-calibracion">
+                
+                <div class="lente-prueba">
+                    <div class="aro-optico">
+                        <span class="marcador-eje">0°</span>
+                        <span class="marcador-eje">90°</span>
+                        <span class="marcador-eje">180°</span>
+                        <span class="marcador-eje">270°</span>
+                    </div>
+                    <div class="cristal-refractor">
+                        <div class="datos-aberracion">
+                            <h4>Horarios</h4>
+                            <p>L-V: 09:00 - 19:00</p>
+                            <p>SAB: 10:00 - 14:00</p>
+                            <p class="txt-apagado">DOM: Cerrado</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lente-prueba">
+                    <div class="aro-optico">
+                        <span class="marcador-eje">0°</span>
+                        <span class="marcador-eje">90°</span>
+                        <span class="marcador-eje">180°</span>
+                        <span class="marcador-eje">270°</span>
+                    </div>
+                    <div class="cristal-refractor">
+                        <div class="datos-aberracion">
+                            <h4>Servicios</h4>
+                            <p>❯ Examen Computarizado</p>
+                            <p>❯ Calibración de Armazones</p>
+                            <p>❯ Contactología</p>
+                            <p>❯ Asesoría Estética</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lente-prueba">
+                    <div class="aro-optico">
+                        <span class="marcador-eje">0°</span>
+                        <span class="marcador-eje">90°</span>
+                        <span class="marcador-eje">180°</span>
+                        <span class="marcador-eje">270°</span>
+                    </div>
+                    <div class="cristal-refractor">
+                        <div class="datos-aberracion">
+                            <h4>Ubicación</h4>
+                            <p>Simón Bolívar 543</p>
+                            <p>2340142 Valparaíso</p>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+            <section class="radar-ubicacion">
+                <div class="coordenadas-overlay">
+                    <p>COORDENADAS ENLAZADAS</p>
+                    <span>SIMÓN BOLÍVAR 543, VALPARAÍSO</span>
+                </div>
+                <iframe 
+                    src="https://maps.google.com/maps?q=Simon%20Bol%C3%ADvar%20543,%20Valpara%C3%ADso&t=&z=16&ie=UTF8&iwloc=&output=embed" 
+                    width="100%" 
+                    height="450" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy">
+                </iframe>
+            </section>
+
+            <footer class="hud-footer">
+                <div class="linea-espectro"></div>
+                <div class="footer-contenido">
+                    <p>© 2026 Óptica Cloe Cruz. Todos los derechos reservados.</p>
+                    <p class="firma-dev">DESARROLLADO POR EDVYNKARIS</p>
+                </div>
+            </footer>
+        </div>
+        <script src="static/script.js"></script>
+    </body>
+</html>

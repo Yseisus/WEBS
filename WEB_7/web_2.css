@@ -1,0 +1,708 @@
+/* 1. Importaciones */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap');
+
+@font-face {
+    font-family: 'Mondira';
+    src: url('imgs2/mondira.otf') format('opentype'); 
+}
+
+/* 2. Estilos base */
+body {
+    background-color: #030303; 
+    color: white;
+    text-align: center;
+    padding: 30px 0;
+    margin: 0;
+    overflow-x: hidden;
+    scroll-behavior: smooth; /* Para que el deslizamiento de pantalla sea suave */
+}
+
+/* 3. Tipografía del Header */
+#titulo-principal {
+    font-family: 'Mondira', cursive;
+    font-size: 75px;
+    color: #e2ba64;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9);
+    margin-bottom: 0px;
+}
+
+#descripcion-principal {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: #b0b0b0;
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+/* --- CONTENEDOR CARRUSEL Y BOTONES LATERALES --- */
+.contenedor-carrusel {
+    position: relative;
+    width: 100%;
+    max-width: 900px; 
+    margin: 150px auto 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-elegante {
+    background: transparent;
+    border: 1px solid rgba(226, 186, 100, 0.3);
+    color: #e2ba64;
+    font-size: 30px;
+    width: 50px;
+    height: 50px; 
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 10px rgba(226, 186, 100, 0.1);
+    z-index: 100; 
+}
+
+.btn-izq { position: absolute; left: 20px; }
+.btn-der { position: absolute; right: 20px; }
+
+.btn-elegante:hover {
+    background: rgba(226, 186, 100, 0.1);
+    border: 1px solid rgba(226, 186, 100, 1);
+    box-shadow: 0 0 20px rgba(226, 186, 100, 0.5);
+    transform: scale(1.1);
+}
+
+/* 4. El Escenario 3D */
+.escenario-3d {
+    perspective: 1200px;
+    width: 100%;
+    height: 450px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ruleta {
+    position: relative;
+    width: 200px; 
+    height: 280px; 
+    transform-style: preserve-3d;
+    transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* 5. Los Contenedores */
+.caja {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transform: rotateY(calc(var(--i) * 72deg)) translateZ(260px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer; /* Indica que se puede hacer clic */
+}
+
+/* 6. Difuminado de la Imagen */
+.imagen-magica {
+    position: absolute;
+    width: 130%; 
+    height: 130%;
+    object-fit: cover; 
+    z-index: 2;
+    -webkit-mask-image: radial-gradient(circle, rgba(0,0,0,1) 35%, rgba(0,0,0,0) 70%);
+    mask-image: radial-gradient(circle, rgba(0,0,0,1) 35%, rgba(0,0,0,0) 70%);
+    animation: respirar 6s infinite ease-in-out alternate;
+    transition: filter 0.5s ease;
+}
+
+.caja:hover .imagen-magica {
+    filter: brightness(1.2) contrast(1.1); 
+}
+
+/* 7. Textos flotantes */
+.info-plato {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    z-index: 3;
+    text-align: center;
+    pointer-events: none; 
+    opacity: 0.7;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    transform: translateY(10px);
+}
+
+.caja:hover .info-plato {
+    opacity: 1;
+    transform: translateY(0px);
+}
+
+.info-plato h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 20px; 
+    color: #ffffff;
+    margin: 0 0 5px 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0px 4px 10px rgba(0,0,0,1), 0px 0px 15px rgba(226, 186, 100, 0.5); 
+}
+
+.info-plato p {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    font-size: 11px; 
+    color: #e2ba64;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin: 0;
+    text-shadow: 0px 2px 5px rgba(0,0,0,1);
+}
+
+/* --- 8. AURAS MÁGICAS --- */
+.aura-magica {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    z-index: 1;
+    opacity: 0.6;
+    filter: blur(40px); 
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.caja:hover .aura-magica {
+    opacity: 1;
+    transform: scale(1.2);
+}
+
+.aura-zafiro .aura-magica { background: #1e90ff; }
+.aura-solar .aura-magica { background: #ff4500; }
+.aura-carmesi .aura-magica { background: #8b0000; }
+.aura-esmeralda .aura-magica { background: #228b22; }
+.aura-estelar .aura-magica { background: #f8f8ff; }
+
+@keyframes respirar {
+    0% { transform: scale(1) translateY(0px); }
+    100% { transform: scale(1.05) translateY(-10px); }
+}
+
+/* --- LA CORONITA MÁGICA --- */
+.contenedor-corona {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.btn-corona {
+    background: transparent;
+    border: none;
+    color: rgba(226, 186, 100, 0.4);
+    font-size: 40px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    text-shadow: 0 0 10px rgba(0,0,0,1);
+}
+
+.btn-corona:hover {
+    color: #e2ba64;
+    transform: scale(1.2);
+    text-shadow: 0 0 20px rgba(226, 186, 100, 0.8);
+}
+
+/* Clase dinámica cuando estás viendo la carta (te invita a volver) */
+.corona-activa .btn-corona {
+    color: #e2ba64;
+    animation: latidoCorona 2s infinite;
+}
+
+@keyframes latidoCorona {
+    0% { text-shadow: 0 0 10px rgba(226, 186, 100, 0.4); transform: scale(1); }
+    50% { text-shadow: 0 0 25px rgba(226, 186, 100, 1); transform: scale(1.15); }
+    100% { text-shadow: 0 0 10px rgba(226, 186, 100, 0.4); transform: scale(1); }
+}
+
+/* --- SISTEMA DE CAMBIO DE VISTAS --- */
+#zona-dinamica {
+    position: relative;
+    width: 100%;
+    min-height: 500px;
+}
+
+.oculto {
+    display: none !important;
+}
+
+.animacion-aparicion {
+    animation: aparecerSuave 0.6s ease forwards;
+}
+
+@keyframes aparecerSuave {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* --- 9. SECCIÓN UBICACIÓN: HUD 2026 --- */
+.seccion-ubicacion {
+    position: relative;
+    width: 100%;
+    height: 80vh; 
+    min-height: 500px;
+    background: #000;
+}
+
+.mapa-negro {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    filter: grayscale(100%) invert(92%) contrast(1.2) hue-rotate(180deg);
+    opacity: 0.7; 
+}
+
+.sombra-mapa {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, #030303 0%, transparent 15%, transparent 85%, #030303 100%);
+    z-index: 2;
+    pointer-events: none; 
+}
+
+.hud-contacto {
+    position: absolute;
+    bottom: 50px;
+    left: 50px; 
+    z-index: 3;
+    width: 320px;
+    background: rgba(10, 10, 10, 0.65);
+    backdrop-filter: blur(15px); 
+    -webkit-backdrop-filter: blur(15px);
+    border-left: 3px solid #671637; 
+    border-top: 1px solid rgba(255,255,255,0.05);
+    border-right: 1px solid rgba(255,255,255,0.05);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    border-radius: 0 15px 15px 0;
+    padding: 30px;
+    box-shadow: 15px 15px 30px rgba(0,0,0,0.8);
+    text-align: left;
+    transition: transform 0.3s ease;
+}
+
+.hud-contacto:hover {
+    transform: translateX(10px); 
+}
+
+.hud-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    border-bottom: 1px solid rgba(226, 186, 100, 0.2);
+    padding-bottom: 15px;
+}
+
+.titulo-contacto {
+    font-family: 'Mondira', cursive;
+    font-size: 32px;
+    color: #e2ba64;
+    margin: 0;
+}
+
+.pulso-live {
+    width: 8px;
+    height: 8px;
+    background-color: #2ecc71;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #2ecc71;
+    animation: latido 1.5s infinite;
+}
+
+.hud-body {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.hud-item {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.hud-label {
+    display: block;
+    color: #671637; 
+    font-weight: 700;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 4px;
+}
+
+.hud-item p {
+    color: #e0e0e0;
+    font-weight: 300;
+    font-size: 13px;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.hud-btn {
+    display: block;
+    margin-top: 30px;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: #000;
+    background: #e2ba64;
+    padding: 12px 0;
+    text-align: center;
+    border-radius: 4px;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+}
+
+.hud-btn:hover {
+    background: #fff;
+    box-shadow: 0 0 15px rgba(226, 186, 100, 0.6);
+}
+
+@keyframes latido {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.5); opacity: 0.5; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@media (max-width: 768px) {
+    .hud-contacto {
+        left: 50%;
+        bottom: 20px;
+        transform: translateX(-50%);
+        width: 80%;
+        border-left: none;
+        border-top: 3px solid #671637;
+        border-radius: 0 0 15px 15px;
+    }
+    .hud-contacto:hover { transform: translateX(-50%) translateY(-5px); }
+}
+
+/* --- 10. DISEÑO DE LA CARTA (EL PERGAMINO) --- */
+.seccion-carta {
+    position: relative;
+    width: 100%;
+    min-height: 80vh;
+    padding: 60px 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: radial-gradient(circle at top, #111111 0%, #030303 80%);
+    border-top: 1px solid rgba(226, 186, 100, 0.1);
+}
+
+/* Un sutil brillo central detrás del texto */
+.carta-brillo-fondo {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 400px;
+    background: radial-gradient(ellipse, rgba(103, 22, 55, 0.2) 0%, transparent 70%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.carta-titulo {
+    position: relative;
+    z-index: 1;
+    font-family: 'Mondira', cursive;
+    font-size: 65px;
+    color: #e2ba64;
+    margin: 0 0 50px 0;
+    text-shadow: 0 0 25px rgba(226, 186, 100, 0.3);
+}
+
+.lista-platos {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 700px; /* Ancho elegante para que las líneas no sean tan largas */
+    display: flex;
+    flex-direction: column;
+    gap: 40px; /* Separación entre cada plato */
+}
+
+.plato-item {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    transition: transform 0.3s ease;
+}
+
+.plato-item:hover {
+    transform: translateX(10px); /* Un pequeño salto al leer */
+}
+
+.plato-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 8px;
+}
+
+.plato-nombre {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* La línea punteada que conecta el nombre con el precio */
+.plato-linea {
+    flex-grow: 1;
+    border-bottom: 2px dotted rgba(226, 186, 100, 0.3);
+    margin: 0 15px;
+    opacity: 0.7;
+}
+
+.plato-precio {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: #e2ba64;
+    white-space: nowrap;
+}
+
+.plato-desc {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    font-size: 13px;
+    color: #aaaaaa;
+    margin: 0;
+    line-height: 1.6;
+    max-width: 85%; /* Para que no llegue hasta el precio, se ve más estético */
+}
+
+@media (max-width: 768px) {
+    .carta-titulo { font-size: 50px; }
+    .plato-header { flex-direction: column; align-items: flex-start; }
+    .plato-linea { display: none; }
+    .plato-precio { margin-top: 5px; color: #671637; } /* Rojo sangre en móvil para destacar */
+    .plato-desc { max-width: 100%; }
+}
+
+/* --- 11. PRE-FOOTER (REDES SOCIALES INNOVADORAS) --- */
+.pre-footer-redes {
+    padding: 80px 20px 60px;
+    background: linear-gradient(to bottom, transparent, #080808);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 10;
+}
+
+.titulo-redes {
+    font-family: 'Mondira', cursive;
+    color: #e2ba64;
+    font-size: 45px;
+    margin-bottom: 50px;
+    margin-top: 0;
+    text-shadow: 0 0 15px rgba(226, 186, 100, 0.3);
+}
+
+.contenedor-redes {
+    display: flex;
+    gap: 40px;
+    perspective: 1000px; /* Base para el efecto 3D */
+}
+
+.red-item {
+    position: relative;
+    width: 65px;
+    height: 65px;
+    background: rgba(10, 10, 10, 0.9);
+    border: 1px solid rgba(226, 186, 100, 0.2);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 0 20px rgba(0,0,0,1);
+    transform-style: preserve-3d;
+}
+
+/* El aura giratoria del borde */
+.red-item::before {
+    content: '';
+    position: absolute;
+    top: -2px; left: -2px; right: -2px; bottom: -2px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #671637, #e2ba64, #671637);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    animation: girarBorde 3s linear infinite;
+}
+
+/* Efecto Hover 3D y brillo */
+.red-item:hover {
+    transform: translateY(-15px) rotateX(15deg) rotateY(-15deg);
+    box-shadow: 0 15px 30px rgba(103, 22, 55, 0.7); /* Brillo rojo sangre */
+    border-color: transparent;
+}
+
+.red-item:hover::before {
+    opacity: 1;
+}
+
+.red-item .icono {
+    font-size: 26px; /* Tamaño ideal para los logos */
+    color: #ffffff;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.red-item:hover .icono {
+    color: #e2ba64; /* Dorado mágico al pasar el mouse */
+    transform: scale(1.1); /* Un pequeño salto adicional al icono */
+}
+
+/* Ajustes responsivos actualizados para que quepan 5 redes */
+@media (max-width: 768px) {
+    .contenedor-redes { 
+        gap: 15px; 
+        flex-wrap: wrap; /* Permite que bajen a la siguiente línea si no caben */
+        justify-content: center;
+    }
+    .red-item { width: 50px; height: 50px; }
+    .red-item .icono { font-size: 20px; }
+    .titulo-redes { font-size: 35px; }
+}
+
+/* Tooltip flotante con el nombre de la red */
+.red-item::after {
+    content: attr(data-text);
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%) translateY(15px);
+    background: #671637; 
+    color: white;
+    padding: 6px 14px;
+    border-radius: 4px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.8);
+}
+
+.red-item:hover::after {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+@keyframes girarBorde {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* --- 12. FOOTER ELEGANTE --- */
+.footer-elegante {
+    background: #000000;
+    padding: 50px 20px 30px;
+    position: relative;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.02);
+}
+
+.footer-linea {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(226, 186, 100, 0.4), transparent);
+}
+
+.footer-contenido {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.footer-logo {
+    font-family: 'Mondira', cursive;
+    font-size: 28px;
+    color: rgba(226, 186, 100, 0.4);
+    margin-bottom: 5px;
+    transition: color 0.3s ease;
+}
+
+.footer-logo:hover {
+    color: #e2ba64;
+}
+
+.footer-copy {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    font-size: 11px;
+    color: #666666;
+    margin: 0;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.footer-credito {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    font-size: 10px;
+    color: #444444;
+    margin: 0;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-top: 10px;
+}
+
+.resaltado-edvyn {
+    color: #671637; 
+    font-weight: 700;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.resaltado-edvyn:hover {
+    color: #e2ba64;
+    text-shadow: 0 0 10px rgba(226, 186, 100, 0.8);
+    letter-spacing: 4px;
+}
+
+/* Ajustes responsivos para las redes */
+@media (max-width: 768px) {
+    .contenedor-redes { gap: 20px; }
+    .red-item { width: 55px; height: 55px; }
+    .titulo-redes { font-size: 35px; }
+}

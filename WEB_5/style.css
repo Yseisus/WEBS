@@ -1,0 +1,207 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Nunito:wght@300;400;600;800&display=swap');
+
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #fdfbf7; /* Crema/Blanco cálido */
+    color: #33261d; /* Marrón espresso oscuro */
+    font-family: 'Nunito', sans-serif;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, .subtitle {
+    font-family: 'Lora', Georgia, serif; /* Fuente elegante para títulos */
+}
+
+/* ---------------- UI GLOBALES Y BOTONES ---------------- */
+.ui-button, .ui-select, .open-menu-btn {
+    background-color: #ffffff;
+    color: #33261d;
+    border: 1px solid #d35400; /* Terracota cálido */
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 30px; /* Bordes suaves y amigables */
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    outline: none;
+}
+
+.ui-button:hover, .ui-select:hover, .open-menu-btn:hover {
+    background-color: #d35400;
+    color: #ffffff;
+    box-shadow: 0 6px 12px rgba(211, 84, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+.ui-button:active, .open-menu-btn:active { transform: scale(0.97); }
+
+/* ---------------- HERO SECTION ---------------- */
+.hero-section {
+    position: relative; width: 100vw; height: 100vh;
+    display: flex; align-items: center; justify-content: center; overflow: hidden;
+}
+.hero-video {
+    position: absolute; top: 0; left: 0;
+    width: 100%; height: 100%; object-fit: cover; z-index: 1; pointer-events: none; 
+}
+.video-overlay {
+    position: absolute; top: 0; left: 0;
+    width: 100%; height: 100%; 
+    background: linear-gradient(to bottom, rgba(44, 30, 22, 0.4), rgba(44, 30, 22, 0.7)); 
+    z-index: 2;
+}
+.hero-content { position: relative; z-index: 3; text-align: center; color: #ffffff; }
+.hero-content h1 {
+    font-size: clamp(3.5rem, 8vw, 6.5rem); 
+    font-weight: 700; 
+    letter-spacing: 2px; 
+    text-shadow: 2px 4px 15px rgba(0, 0, 0, 0.5);
+    margin-bottom: 10px;
+}
+.hero-content .subtitle {
+    font-size: clamp(1.2rem, 2vw, 1.8rem);
+    font-style: italic;
+    color: #f39c12; /* Acento dorado/mostaza */
+    letter-spacing: 1px;
+}
+
+/* ---------------- SECTION HEADER GENÉRICO ---------------- */
+.section-header { text-align: center; margin-bottom: 50px; }
+.section-header h2 {
+    font-size: 2.5rem; font-weight: 700; color: #2c1e16; margin-bottom: 10px;
+}
+.section-header p { color: #8e7a6b; font-size: 1.1rem; }
+
+/* ---------------- SECTION: MESA 3D (ARTESANAL) ---------------- */
+.table-section {
+    padding: 100px 20px 60px 20px; display: flex; flex-direction: column; align-items: center;
+}
+.table-3d-wrapper { position: relative; width: 100%; max-width: 1400px; }
+
+.pizza-controls-bar {
+    display: flex; justify-content: center; gap: 15px; margin-bottom: 30px; flex-wrap: wrap;
+}
+.pizza-controls-bar .ui-select { flex: 1; min-width: 280px; max-width: 400px; }
+
+.ui-select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23d35400' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat; background-position: right 1.2rem center; background-size: 1em;
+}
+
+.tooltip {
+    position: absolute; display: none; background: #2c1e16; color: #fff;
+    padding: 6px 15px; border-radius: 20px; font-weight: 600; font-size: 0.9rem; pointer-events: none; 
+    z-index: 10; transform: translate(-50%, -150%); box-shadow: 0 5px 15px rgba(0,0,0,0.2); 
+}
+
+/* El lienzo: Losa de piedra oscura con borde de madera natural */
+.table-3d-container {
+    width: 100%; height: 75vh; min-height: 600px;
+    background: radial-gradient(circle, #434343 0%, #1c1c1c 100%);
+    border: 8px solid #8b5a2b; /* Madera */
+    border-radius: 16px;
+    box-shadow: 0 20px 50px rgba(44, 30, 22, 0.4), inset 0 0 60px rgba(0,0,0,0.8); overflow: hidden;
+}
+.table-3d-container canvas { width: 100% !important; height: 100% !important; outline: none; }
+
+/* ---------------- SECTION: ACOMPAÑAMIENTOS Y BEBIDAS ---------------- */
+.sides-section { padding: 60px 20px 100px 20px; max-width: 1200px; margin: 0 auto; }
+
+.categories-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;
+}
+
+.category-card {
+    position: relative; border-radius: 16px; overflow: hidden; cursor: pointer;
+    box-shadow: 0 10px 30px rgba(44, 30, 22, 0.1);
+    height: 400px;
+    background-color: #1c1c1c; /* Fondo por si el video tarda un microsegundo en cargar */
+}
+
+/* NUEVO: Unificamos img y video bajo la misma clase */
+.category-media {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    transition: transform 0.8s ease;
+}
+
+.category-card:hover .category-media { 
+    transform: scale(1.08); 
+}
+
+.category-overlay {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to top, rgba(44,30,22,0.9), rgba(44,30,22,0.1));
+    display: flex; flex-direction: column; justify-content: flex-end; align-items: center;
+    padding: 40px 20px; text-align: center;
+    z-index: 2; /* Asegura que el texto siempre quede por encima del video */
+}
+.category-overlay h3 { font-size: 2.2rem; margin-bottom: 20px; color: #fff; }
+/* ---------------- VENTANAS FLOTANTES (MODALES) ---------------- */
+.modal-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+    background: rgba(253, 251, 247, 0.9); backdrop-filter: blur(8px);
+    display: flex; justify-content: center; align-items: center;
+    z-index: 2000; opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+}
+.modal-overlay.active { opacity: 1; pointer-events: all; }
+
+.modal-content {
+    background: #ffffff; width: 90%; max-width: 800px; max-height: 85vh;
+    border-radius: 16px; box-shadow: 0 25px 50px rgba(44, 30, 22, 0.2);
+    display: flex; flex-direction: column; overflow: hidden; transform: translateY(20px); transition: transform 0.3s ease;
+}
+.modal-overlay.active .modal-content { transform: translateY(0); }
+
+.modal-header {
+    padding: 25px 30px; border-bottom: 1px solid #eee;
+    display: flex; justify-content: space-between; align-items: center; background: #faf8f5;
+}
+.modal-header h3 { font-size: 1.8rem; color: #2c1e16; }
+.close-modal-btn { background: none; border: none; color: #8e7a6b; font-size: 1.8rem; cursor: pointer; transition: color 0.3s;}
+.close-modal-btn:hover { color: #d35400; }
+
+.modal-body {
+    padding: 30px; overflow-y: auto;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px;
+}
+
+/* Tarjetas de menú dentro del modal (Estilo carta) */
+.menu-item-card {
+    background: #ffffff; border-bottom: 1px solid #eee; padding-bottom: 15px;
+    display: flex; flex-direction: column;
+}
+.menu-item-header { display: flex; justify-content: space-between; margin-bottom: 8px; }
+.menu-item-header h4 { font-size: 1.3rem; color: #2c1e16; font-family: 'Lora', serif; }
+.menu-item-header .price { font-weight: 800; color: #d35400; font-size: 1.1rem;}
+.menu-item-desc { color: #8e7a6b; font-size: 0.95rem; line-height: 1.5;}
+
+/* ---------------- FOOTER ELEGANTE ---------------- */
+.main-footer { background-color: #2c1e16; color: #fff; padding: 80px 20px 30px 20px; }
+.footer-content { max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 40px; }
+.footer-brand h2 { color: #f39c12; font-size: 2.2rem; margin-bottom: 15px; }
+.footer-brand p { color: #d1c4b9; max-width: 320px; line-height: 1.6; }
+.footer-links h4 { color: #fff; margin-bottom: 20px; font-size: 1.2rem; }
+.footer-links ul { list-style: none; }
+.footer-links ul li { margin-bottom: 12px; }
+.footer-links ul li a { color: #d1c4b9; text-decoration: none; transition: color 0.3s; }
+.footer-links ul li a:hover { color: #f39c12; }
+.footer-bottom { text-align: center; color: #8e7a6b; margin-top: 60px; font-size: 0.95rem; border-top: 1px solid #3e2b20; padding-top: 25px; }
+
+@media (max-width: 768px) {
+    .pizza-controls-bar { flex-direction: column; width: 100%; }
+    .table-3d-container { height: 50vh; min-height: 400px; }
+    .hero-content h1 { font-size: 3.5rem; }
+}

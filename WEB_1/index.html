@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web - Template | EdvynKaris</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <audio id="pista-audio" src="temazo.mp3" loop preload="auto"></audio>
+
+    <div id="cursor-tour"></div>
+    <div id="barra-progreso"></div>
+    <div id="aviso-offline">CONEXIÓN PERDIDA.</div>
+
+    <div id="menu-contextual">
+        <div class="item-contextual" id="ctx-copiar">Copiar URL local</div>
+        <div class="item-contextual" id="ctx-oscuro">Modo Inverso</div>
+        <div class="item-contextual" id="ctx-alerta">Testear Sonido</div>
+    </div>
+
+    <div id="contenedor-btn">
+        <div id="btn-menu" class="btn-menu">
+            <span class="linea"></span><span class="linea"></span><span class="linea"></span>
+        </div>
+    </div>
+
+    <h1 id="datos-titulo">EdvynKaris</h1>
+    <canvas id="lienzo"></canvas>
+    
+    <div id="hero-espacio"></div>
+
+    <main id="ui-futura">
+        <nav id="nav-vanguardia" class="nav-vanguardia">
+            <a href="#inicio" data-target="inicio" class="enlace-nav"><div class="texto-enlace"><span>1.</span> <span class="traducible" data-i18n="nav1">INICIO</span></div></a>
+            <a href="#nosotros" data-target="nosotros" class="enlace-nav"><div class="texto-enlace"><span>2.</span> <span class="traducible" data-i18n="nav2">NOSOTROS</span></div></a>
+            <a href="#servicios" data-target="servicios" class="enlace-nav"><div class="texto-enlace"><span>3.</span> <span class="traducible" data-i18n="nav3">SERVICIOS</span></div></a>
+            <a href="#contacto" data-target="contacto" class="enlace-nav"><div class="texto-enlace"><span>4.</span> <span class="traducible" data-i18n="nav4">CONTACTO</span></div></a>
+            
+            <div class="controles-extra">
+                <button id="btn-contraste" class="btn-toggle traducible" data-i18n="btn_inv">Inverso</button>
+                <button id="btn-idioma" class="btn-toggle">EN / ES</button>
+                <button id="btn-audio" class="btn-toggle">AUDIO: OFF</button>
+                <button id="btn-tour" class="btn-toggle">TOUR MAGIA</button>
+            </div>
+        </nav>
+        
+        <div id="contenedor-rutas" class="contenedor-secciones">
+            <section id="inicio" class="seccion-web">
+                <div class="linea-fina"></div>
+                <h2 class="texto-gigante anim-peso"><span class="traducible" data-i18n="t1a">Mundo De</span><br><b class="traducible" data-i18n="t1b">Particulas.</b></h2>
+                <p class="texto-intro traducible" data-i18n="p1"> | Web con tematica "particulas"</p>
+            </section>
+
+            <section id="nosotros" class="seccion-web">
+                <div class="linea-fina"></div>
+                <h2 class="texto-gigante anim-peso"><span class="traducible" data-i18n="t2a">Sobre</span><br><b class="traducible" data-i18n="t2b">Nosotros.</b></h2>
+                <p class="texto-intro traducible" data-i18n="p2">| Somos mas que una empresa de desarrollo, somos una familia.</p>
+            </section>
+
+            <section id="servicios" class="seccion-web">
+                <div class="linea-fina"></div>
+                <h2 class="texto-gigante anim-peso"><span class="traducible" data-i18n="t3a">Soluciones</span><br><b class="traducible" data-i18n="t3b">A Medida.</b></h2>
+                <div class="grid-servicios">
+                    <div class="tarjeta-servicio">
+                        <h3 class="traducible" data-i18n="srv1_t">Plataformas UI</h3>
+                        <p class="traducible" data-i18n="srv1_p">Interfaces inmersivas que retienen al usuario, equipadas con texturas fractales creadas por código CSS.</p>
+                    </div>
+                    <div class="tarjeta-servicio">
+                        <h3 class="traducible" data-i18n="srv2_t">Comercio Dinámico</h3>
+                        <p class="traducible" data-i18n="srv2_p">Sistemas optimizados para la conversión. Arquitectura sólida, reactiva e instantánea.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contacto" class="seccion-web" style="border-bottom: none;">
+                <div class="linea-fina"></div>
+                <h2 class="texto-gigante anim-peso"><span class="traducible" data-i18n="t4a">Hablemos del</span><br><b class="traducible" data-i18n="t4b">Futuro.</b></h2>
+                <a href="#" class="btn-contacto traducible" data-i18n="btn_ctc">Iniciar Proyecto</a>
+            </section>
+
+            <footer id="footer-dinamico">
+                <div class="ecualizador" id="eq-contenedor"></div>
+                <div class="info-footer traducible" data-i18n="ftr">© 2026 - EdvynKaris. Todos los derechos reservados.</div>
+            </footer>
+        </div>
+    </main>
+
+    <script src="script.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,237 @@
+/* Modificado para permitir scroll vertical sin que las patitas rompan todo */
+body {
+    margin: 0;
+    min-height: 100vh;
+    background-color: #f28bab;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow-x: hidden; /* Solo esconde el scroll horizontal */
+    position: relative;
+    padding-bottom: 50px; /* Espacio al final de la página */
+    z-index: 1; /* Establece un contexto de apilamiento base */
+}
+
+/* Contenedor del título - LIMPIECITO */
+.seccion-principal {
+    text-align: center;
+    padding-top: 15vh;
+    margin-bottom: 40px;
+    position: relative; 
+    z-index: 10;
+}
+
+.seccion-principal h1 {
+    font-size: 3.5rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    margin: 0;
+}
+
+.seccion-principal p {
+    font-size: 1.2rem;
+    margin-top: 10px;
+}
+
+/* Animación de la lluvia de patitas */
+.patita {
+    position: fixed; 
+    width: 60px; 
+    height: 60px;
+    pointer-events: none; 
+    animation: caminar 4s linear forwards;
+    opacity: 0;
+    z-index: 1; 
+}
+
+@keyframes caminar {
+    0% { 
+        transform: rotate(var(--rotacion)) translateY(0) scale(0.5); 
+        opacity: 0; 
+    }
+    20% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { 
+        transform: rotate(var(--rotacion)) translateY(-100px) scale(1.2); 
+        opacity: 0; 
+    }
+}
+
+/* =========================================
+   SECCIÓN PERRUNA: PLACAS DE IDENTIFICACIÓN
+   ========================================= */
+.contenedor-placas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+    padding-top: 40px;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 10;
+}
+
+/* Base de la placa colgante */
+.placa {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+    /* Aquí está la magia: el eje de rotación está arriba, en el hoyito */
+    transform-origin: top center;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+}
+
+/* Efecto de péndulo cuando pasas el mouse */
+.placa:hover {
+    transform: rotate(8deg);
+}
+
+/* El agujero por donde pasaría la cadena del collar */
+.hoyo-argolla {
+    position: absolute;
+    top: 20px;
+    width: 30px;
+    height: 30px;
+    background-color: #f28bab; /* Mismo color del body para que parezca un hoyo real */
+    border-radius: 50%;
+    box-shadow: inset 0 5px 8px rgba(0,0,0,0.4);
+}
+
+/* --- FORMAS ESPECÍFICAS DE LAS PLACAS --- */
+
+/* Placa Redonda (Azul) */
+.placa-circulo {
+    width: 350px;
+    height: 350px;
+    border-radius: 50%; /* Círculo perfecto */
+    background-color: #ffb9cf;
+    border: 12px solid #dfa2b5; /* Borde grueso tipo plástico/metal duro */
+    color: white;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+/* Placa Cápsula (Amarillo) */
+.placa-capsula {
+    width: 320px;
+    height: 420px;
+    border-radius: 160px; /* Óvalo perfecto */
+    background-color: #fae0e8;
+    border: 12px solid #caa5b1;
+    color: #333; /* Texto oscuro para el fondo amarillo */
+    padding: 40px 30px;
+    box-sizing: border-box;
+}
+
+/* Ajustes de texto para las placas */
+.placa h2 {
+    margin-top: 30px;
+    font-size: 2rem;
+    text-transform: uppercase;
+    font-weight: 900;
+    margin-bottom: 20px;
+}
+
+.placa-circulo ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 500;
+    line-height: 1.8;
+}
+
+.placa-capsula .horario-detalle p {
+    font-size: 1.2rem;
+    margin: 15px 0;
+    border-bottom: 2px dotted rgba(0,0,0,0.2);
+    padding-bottom: 5px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .contenedor-placas {
+        flex-direction: column;
+        gap: 40px;
+    }
+}
+
+/* =========================================
+   PRE-FOOTER MAPA
+   ========================================= */
+.pre-footer-mapa {
+    text-align: center;
+    padding: 60px 20px 40px;
+    margin-top: 40px;
+    position: relative;
+    z-index: 10;
+}
+
+.pre-footer-mapa h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.mapa-contenedor {
+    max-width: 800px;
+    margin: 0 auto;
+    /* Mismo borde de las placas para mantener el estilo perruno */
+    border: 12px solid #dfa2b5; 
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 25px rgba(0,0,0,0.3);
+    background-color: white;
+}
+
+.direccion-texto {
+    margin-top: 20px;
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+/* =========================================
+   FOOTER
+   ========================================= */
+.footer-principal {
+    background-color: #222; /* Negro oscuro pero suave */
+    color: #ffb9cf; /* Texto rosado para contrastar y mantener la paleta */
+    text-align: center;
+    padding: 30px 20px;
+    position: relative;
+    z-index: 10;
+    margin-top: 20px;
+    border-top: 5px dashed #dfa2b5; /* Un detalle como de costura de juguete */
+}
+
+.footer-contenido {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.footer-principal p {
+    margin: 10px 0;
+    font-size: 1rem;
+    color: white;
+}
+
+.footer-principal .mensaje-amor {
+    color: #ffb9cf;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+/* Ajuste responsive para el mapa */
+@media (max-width: 768px) {
+    .mapa-contenedor {
+        border-width: 8px;
+    }
+    .pre-footer-mapa h2 {
+        font-size: 2rem;
+    }
+}

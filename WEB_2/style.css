@@ -1,0 +1,356 @@
+:root {
+    --fuente: 'Space Grotesk', sans-serif;
+}
+
+body {
+    background-color: burlywood; 
+    font-family: var(--fuente);
+    margin: 0;
+}
+
+/* --- TRANSICIÓN REVEAL HORIZONTAL --- */
+
+.contenedor-lienzo {
+  width: 100%;
+  padding: 100px 0; 
+  overflow: hidden; 
+  clip-path: inset(0 100% 0 0);
+  transform: translateX(-20px); 
+  transition: clip-path 2.5s cubic-bezier(0.19, 1, 0.22, 1),
+              transform 2.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.contenedor-lienzo.visible {
+  clip-path: inset(0 0 0 0);
+  transform: translateX(0); 
+}
+
+.contenedor-lienzo.oculto-abajo {
+  clip-path: inset(0 0 0 100%);
+  transform: translateX(20px); 
+}
+
+/* --- FONDO DEL LIENZO --- */
+
+.lienzo-diagonal {
+  background: linear-gradient(90deg, #8B4513, #D2691E, #A0522D, #8B4513);
+  background-size: 300% 100%;
+  transform: skewY(6deg); 
+  padding: 60px 0; 
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  animation: flujoLiquido 10s linear infinite;
+  position: relative; 
+}
+
+@keyframes flujoLiquido {
+  0% { background-position: 100% 0; }
+  100% { background-position: 0 0; }
+}
+
+/* --- BOTONES DEL LIENZO --- */
+
+.contenido-recto {
+  transform: skewY(-6deg); 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px; 
+  position: relative;
+  z-index: 2; 
+}
+
+.btn-menu {
+  background: rgba(255, 255, 255, 0.1); 
+  backdrop-filter: blur(5px); 
+  color: white;
+  padding: 20px 45px; 
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none; 
+  border-radius: 0; 
+  clip-path: polygon(15% 0, 100% 0, 85% 100%, 0 100%);
+}
+
+.btn-menu:nth-child(1) { transform: translateY(-30px); }
+.btn-menu:nth-child(2) { transform: translateY(0); }
+.btn-menu:nth-child(3) { transform: translateY(30px); }
+
+.btn-menu:nth-child(1):hover { transform: translateY(-35px); background: rgba(255, 255, 255, 0.3); }
+.btn-menu:nth-child(2):hover { transform: translateY(-5px); background: rgba(255, 255, 255, 0.3); }
+.btn-menu:nth-child(3):hover { transform: translateY(25px); background: rgba(255, 255, 255, 0.3); }
+
+
+/* ============================================== */
+/* --- INGENIERÍA MAKIMONO (PERGAMINO CHINO) ---  */
+/* ============================================== */
+
+/* Fondo oscuro overlay de la ventana */
+.ventana-flotante {
+  visibility: hidden; 
+  opacity: 0;
+  position: fixed; 
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1000; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Retrasamos ocultar la visibilidad hasta que termine la animacion de opacidad */
+  transition: visibility 0s linear 0.8s, opacity 0.5s ease 0.3s;
+}
+
+.ventana-flotante.activa {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.4s ease;
+}
+
+/* Contenedor central que sostiene rodillos y papel */
+.makimono-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 400px; /* Altura base del pergamino */
+}
+
+/* Los cilindros de madera en los extremos */
+.makimono-rodillo {
+  width: 25px;
+  height: 440px; 
+  background: linear-gradient(to right, #1a0f0a, #3e2211, #1a0f0a); 
+  border-radius: 12px;
+  box-shadow: 5px 10px 20px rgba(0,0,0,0.6);
+  z-index: 3;
+  position: relative;
+}
+
+/* Topes de los cilindros */
+.makimono-rodillo::before, .makimono-rodillo::after {
+  content: '';
+  position: absolute;
+  width: 35px;
+  height: 15px;
+  background: #0f0703;
+  left: -5px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.8);
+}
+.makimono-rodillo::before { top: -10px; }
+.makimono-rodillo::after { bottom: -10px; }
+
+/* El papel que se despliega */
+.makimono-pergamino {
+  height: 400px;
+  width: 0; /* Empieza cerrado */
+  background-color: #e8d5a6; /* Tono papel antiguo */
+  background-image: url('https://www.transparenttextures.com/patterns/rice-paper.png');
+  box-shadow: inset 0 0 40px rgba(100, 50, 0, 0.4);
+  overflow: hidden; /* Oculta el texto mientras está cerrado */
+  border-top: 3px solid #7d4d2b;
+  border-bottom: 3px solid #7d4d2b;
+  position: relative;
+  z-index: 2;
+  /* Animación de cierre más rápida */
+  transition: width 0.6s cubic-bezier(0.8, 0, 0.2, 1); 
+}
+
+/* Al estar activa, el papel crece forzando los rodillos a separarse */
+.ventana-flotante.activa .makimono-pergamino {
+  width: 80vw;
+  max-width: 700px;
+  /* Animación de desenrollado épica y suave */
+  transition: width 1.2s cubic-bezier(0.25, 1, 0.5, 1) 0.3s; 
+}
+
+/* El contenido interno de texto */
+.makimono-contenido {
+  width: 80vw;
+  max-width: 700px;
+  padding: 40px 50px;
+  box-sizing: border-box;
+  opacity: 0; /* Empieza invisible */
+  transform: scale(0.9);
+  color: #0a0a0a; /* Negro oscuro alto contraste */
+  /* El contenido desaparece inmediatamente al cerrar */
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+/* El contenido aparece DESPUÉS de que el pergamino se abre */
+.ventana-flotante.activa .makimono-contenido {
+  opacity: 1;
+  transform: scale(1);
+  /* Delay de 1s para asegurar que el pergamino ya está casi abierto */
+  transition: opacity 0.6s ease 1s, transform 0.6s ease 1s; 
+}
+
+/* Titulos internos con tu toque oscuro y rojo */
+.makimono-contenido h2 {
+  color: #8b0000; /* Rojo sangre */
+  border-bottom: 2px solid #0a0a0a;
+  padding-bottom: 10px;
+  margin-top: 0;
+  font-family: serif; 
+  font-size: 2rem;
+}
+
+/* Boton de cierre integrado al diseño */
+.btn-cerrar-makimono {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #8b0000;
+  font-weight: bold;
+  transition: transform 0.3s, color 0.3s;
+}
+
+.btn-cerrar-makimono:hover {
+  color: #ff0000;
+  transform: rotate(90deg);
+}
+
+
+/* --- NUEVOS ESTILOS PARA EL TITULO DE INICIO --- */
+
+.seccion-hero {
+    height: 100vh; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.titulo-animado {
+    font-size: 5.5rem;
+    font-weight: 800;
+    color: #4a2e15;
+    clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+    transform: translateY(80px);
+    transition: clip-path 3.5s cubic-bezier(0.19, 1, 0.22, 1), 
+                transform 3.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.titulo-animado.visible {
+    clip-path: polygon(0 -50%, 100% -50%, 100% 150%, 0 150%);
+    transform: translateY(0);
+}
+
+.titulo-animado.oculto {
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    transform: translateY(-80px);
+}
+
+/* --- MAGIA DEL FONDO DE MANDALAS --- */
+
+.fondo-mandalas {
+  position: absolute;
+  top: 0; left: 0; 
+  width: 100%; height: 100%;
+  z-index: 1; 
+  background-repeat: repeat; 
+  opacity: 0; 
+}
+
+.mandala-1 {
+  background-image: url('https://www.transparenttextures.com/patterns/flowers.png');
+  animation: transicionMandala1 12s linear infinite;
+}
+
+.mandala-2 {
+  background-image: url('https://www.transparenttextures.com/patterns/flower-style.png');
+  animation: transicionMandala2 12s linear infinite;
+  animation-delay: 6s; 
+}
+
+@keyframes transicionMandala1 {
+  0% { background-position: 0 0; opacity: 0; }
+  20% { opacity: 0.8; }
+  80% { opacity: 0.8; }
+  100% { background-position: 400px 400px; opacity: 0; }
+}
+
+@keyframes transicionMandala2 {
+  0% { background-position: 0 0; opacity: 0; }
+  20% { opacity: 0.8; }
+  80% { opacity: 0.8; }
+  100% { background-position: -400px -400px; opacity: 0; }
+}
+
+/* ============================================== */
+/* ESTILOS PARA EL LIENZO INVERSO (/)             */
+/* ============================================== */
+
+.contenedor-lienzo.inverso {
+  clip-path: inset(0 0 0 100%); 
+  transform: translateX(20px); 
+}
+.contenedor-lienzo.inverso.visible {
+  clip-path: inset(0 0 0 0); 
+  transform: translateX(0); 
+}
+.contenedor-lienzo.inverso.oculto-abajo {
+  clip-path: inset(0 100% 0 0); 
+  transform: translateX(-20px); 
+}
+
+.lienzo-diagonal.inverso { transform: skewY(-6deg); }
+.contenido-recto.inverso { transform: skewY(6deg); }
+
+.contenido-recto.inverso .btn-menu {
+  clip-path: polygon(0 0, 85% 0, 100% 100%, 15% 100%);
+}
+
+.contenido-recto.inverso .btn-menu:nth-child(1) { transform: translateY(30px); }
+.contenido-recto.inverso .btn-menu:nth-child(2) { transform: translateY(0); }
+.contenido-recto.inverso .btn-menu:nth-child(3) { transform: translateY(-30px); }
+
+.contenido-recto.inverso .btn-menu:nth-child(1):hover { transform: translateY(25px); background: rgba(255, 255, 255, 0.3); }
+.contenido-recto.inverso .btn-menu:nth-child(2):hover { transform: translateY(-5px); background: rgba(255, 255, 255, 0.3); }
+.contenido-recto.inverso .btn-menu:nth-child(3):hover { transform: translateY(-35px); background: rgba(255, 255, 255, 0.3); }
+
+
+/* ============================================== */
+/* ESTILOS DEL MENSAJE FINAL Y FOOTER             */
+/* ============================================== */
+
+.mensaje-final {
+    text-align: center;
+    padding: 100px 20px 80px 20px; 
+    color: #4a2e15; 
+}
+
+.titulo-cierre {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+.descripcion-cierre {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+    color: #6a4a2e; 
+}
+
+.footer-principal {
+    background-color: #0a0a0a; /* Oscurecido para contrastar mejor con los pergaminos */
+    color: rgba(255, 255, 255, 0.7); 
+    text-align: center;
+    padding: 30px 20px;
+    border-top: 4px solid #8b0000; /* Borde rojo sangre inferior */
+}
+
+.footer-contenido p {
+    margin: 0;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+}
