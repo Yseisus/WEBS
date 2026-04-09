@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yseisus | Inmersión Digital</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600&family=Syne:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Static/CSS/style.css">
+</head>
+<body class="lang-es-active">
+
+    <!-- Global Horizontal Header -->
+    <header class="global-header">
+        <!-- Logo acts as Nav Trigger -->
+        <div class="header-logo" id="logo-trigger">YS</div>
+        
+        <!-- Nav Container (Toggles visibility) -->
+        <nav class="header-nav hidden" id="header-nav">
+            <!-- Adjusted precision scroll timings so layers are actually fully visible -->
+            <a href="javascript:void(0)" class="nav-link" data-scroll="2.5" data-lang="nav_1">Filosofía</a>
+            <a href="javascript:void(0)" class="nav-link" data-scroll="7.2" data-lang="nav_2">Disciplinas</a>
+            <a href="javascript:void(0)" class="nav-link" data-scroll="11.5" data-lang="nav_3">Archivos</a>
+            <a href="javascript:void(0)" class="nav-link" data-scroll="15.5" data-lang="nav_4">Método</a>
+            <button class="nav-btn" data-scroll="19.5" data-lang="nav_5">Alianza</button>
+        </nav>
+        
+        <div class="lang-toggle" id="lang-toggle">
+            <span class="lang-en">EN</span> <span class="lang-sep">/</span> <span class="lang-es">ES</span>
+        </div>
+    </header>
+
+    <!-- Invisible Scroll Tracker (Drives the timeline) -->
+    <div id="scroll-proxy"></div>
+
+    <!-- Fixed Immersive Viewport -->
+    <div id="experience-viewport">
+
+        <!-- Layer 1: The Monolith Entrance -->
+        <div class="fluid-layer" id="layer-intro">
+            <h1 class="colossal-type center-abs">
+                <span class="char-span" data-lang="hero_title_1">Yseisus</span>
+            </h1>
+            <p class="manifesto-intro" data-lang="hero_sub">Esculpimos monolitos digitales. Baja para sumergirte.</p>
+        </div>
+
+        <!-- Layer 2: Expanding Thoughts (Manifesto) -->
+        <div class="fluid-layer" id="layer-manifesto">
+            <div class="text-particle t1" data-lang="mani_1">Fricción entre</div>
+            <div class="text-particle t2 gold-glow" data-lang="mani_2">Luz y Oscuridad</div>
+            <div class="text-particle t3" data-lang="mani_3">Asimetría Pura</div>
+            <div class="text-particle t4" data-lang="mani_4">Identidad Interactiva</div>
+        </div>
+
+        <!-- Layer 2b: Global Agency Scale -->
+        <div class="fluid-layer" id="layer-global">
+            <div class="center-abs flex-col global-arena">
+                <div class="global-text-block">
+                    <h2 class="sub-colossal font-light" data-lang="glob_title">Paradigma Global</h2>
+                    <p class="detail-text" data-lang="glob_desc">Un colectivo multidisciplinario operando sin fronteras. Elevando marcas a través del diseño inmersivo y tecnología de vanguardia.</p>
+                    <div class="coordinates" data-lang="glob_coord">NY / LN / TK / MAD</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Layer 3: Organic Services Expansion -->
+        <div class="fluid-layer" id="layer-services">
+            <div class="center-abs flex-col">
+                <h2 class="bg-layer-text" data-lang="serv_title">DISCIPLINAS</h2>
+                <div class="floating-ring">
+                    <div class="service-cluster">
+                        <span class="ring-text" data-lang="serv_1">Branding Visual /</span>
+                        <p class="service-desc" data-lang="serv_1_desc">Arquitectura de marca global.</p>
+                    </div>
+                    <div class="service-cluster">
+                        <span class="ring-text outline gold-glow" data-lang="serv_2">Desarrollo Web /</span>
+                        <p class="service-desc" data-lang="serv_2_desc">Plataformas nativas hiper-optimizadas.</p>
+                    </div>
+                    <div class="service-cluster">
+                        <span class="ring-text" data-lang="serv_3">Estrategia UX /</span>
+                        <p class="service-desc" data-lang="serv_3_desc">Interacción cognitiva profunda.</p>
+                    </div>
+                    <div class="service-cluster">
+                        <span class="ring-text outline" data-lang="serv_4">Motion 3D /</span>
+                        <p class="service-desc" data-lang="serv_4_desc">Cinemática en código puro.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Layer 4: Cinematic Gallery Reveal (Scale Expansion) -->
+        <div class="fluid-layer" id="layer-portfolio">
+            <div class="gallery-mask">
+                <div class="gallery-track">
+                    <div class="gallery-item g1">
+                        <div class="g-caption">
+                            <span data-lang="port_1">Proyecto Alpha</span>
+                            <span class="port-sub" data-lang="port_1_sub">Sector Financiero / NY</span>
+                        </div>
+                    </div>
+                    <div class="gallery-item g2">
+                        <div class="g-caption">
+                            <span data-lang="port_2">Identidad Noir</span>
+                            <span class="port-sub" data-lang="port_2_sub">Moda & Lujo / Milán</span>
+                        </div>
+                    </div>
+                    <div class="gallery-item g3">
+                        <div class="g-caption">
+                            <span data-lang="port_3">Hyper-Scale Protocol</span>
+                            <span class="port-sub" data-lang="port_3_sub">Inteligencia Artificial / Global</span>
+                        </div>
+                    </div>
+                    <div class="gallery-item g4">
+                        <div class="g-caption">
+                            <span data-lang="port_4">Vanguard Vision</span>
+                            <span class="port-sub" data-lang="port_4_sub">Automoción / Tokio</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Layer 5: Methodology / Process -->
+        <div class="fluid-layer" id="layer-process">
+            <div class="center-abs flex-col process-arena">
+                 <h2 class="colossal-type font-light blur-reveal" data-lang="proc_title">Método</h2>
+                 <div class="process-grid">
+                     <div class="p-item p-1">
+                         <span class="p-num">01</span>
+                         <h3 data-lang="proc_s1">Auditoría</h3>
+                         <p data-lang="proc_d1">Análisis profundo del ecosistema de la marca.</p>
+                     </div>
+                     <div class="p-item p-2">
+                         <span class="p-num">02</span>
+                         <h3 data-lang="proc_s2">Arquitectura</h3>
+                         <p data-lang="proc_d2">Estructuración técnica y visual a escala.</p>
+                     </div>
+                     <div class="p-item p-3">
+                         <span class="p-num">03</span>
+                         <h3 data-lang="proc_s3">Despliegue</h3>
+                         <p data-lang="proc_d3">Implementación nativa sin fricciones.</p>
+                     </div>
+                     <div class="p-item p-4">
+                         <span class="p-num">04</span>
+                         <h3 class="gold-text" data-lang="proc_s4">Evolución</h3>
+                         <p data-lang="proc_d4">Iteración y expansión global continua.</p>
+                     </div>
+                 </div>
+            </div>
+        </div>
+
+        <!-- Layer 5b: Client Ecosystem / Credibility -->
+        <div class="fluid-layer" id="layer-credibility">
+             <div class="center-abs flex-col cred-arena">
+                 <div class="cred-stats">
+                     <div class="stat"><span class="stat-number">120+</span><span class="stat-label" data-lang="cred_1">Proyectos Escalados</span></div>
+                     <div class="stat"><span class="stat-number gold-glow">12</span><span class="stat-label" data-lang="cred_2">Premios Globales</span></div>
+                     <div class="stat"><span class="stat-number">24/7</span><span class="stat-label" data-lang="cred_3">Presencia Multizona</span></div>
+                 </div>
+                 <div class="client-grid">
+                     <span>Aether Networks</span>
+                     <span>Quantum Labs</span>
+                     <span class="gold-text">Onyx Intl.</span>
+                     <span>Syndicate Art</span>
+                     <span>Nova Capital</span>
+                 </div>
+             </div>
+        </div>
+
+        <!-- Layer 6: Echo Closing & Contact -->
+        <div class="fluid-layer" id="layer-contact">
+            <div class="center-abs flex-col contact-arena">
+                <h2 class="colossal-type gold-glow" data-lang="cont_title">Alianza</h2>
+                <p class="manifesto-intro relative-pos" data-lang="cont_sub">Inicia el despliegue. Hablemos de escala y control.</p>
+                <form class="fluid-form">
+                    <input type="text" id="input-name" placeholder="Tu esencia (Nombre)" required>
+                    <input type="email" id="input-email" placeholder="Señal (Email corporativo)" required>
+                    <input type="text" id="input-brand" placeholder="El Horizonte (Proyecto)" required>
+                    <button type="button" class="form-btn" data-lang="cont_btn">Establecer Conexión</button>
+                </form>
+                <div class="footer-echo" data-lang="footer">© 2026 YSEISUS. DIGITAL MONOLITHS HQ.</div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- GSAP & Core Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="Static/JS/script.js"></script>
+</body>
+</html>
